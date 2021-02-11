@@ -2,7 +2,7 @@ Bienvenido a este blog en el que se presentarán las diversas prácticas realiza
 
 ![Ejemplo de "UI"](images/logo.png)
 
-## Enunciado de prácticas
+A continuación se presenta el documento en el que se enuncian todas las prácticas realizadas.
 
 [Enunciados de prácticas](https://ncvt-aep.ulpgc.es/cv/ulpgctp21/pluginfile.php/412240/mod_resource/content/37/CIU_Pr_cticas.pdf)
 
