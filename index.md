@@ -1,9 +1,8 @@
-Hello and welcome to this blog. Edit the `index.md` file to change this content. All pages on the blog, including this one, use [Markdown](https://guides.github.com/features/mastering-markdown/). You can include images:
+Bienvenido a este blog en el que se presentarán las diversas prácticas realizadas en la asignatura de "CIU". El objetivo de esta asignatura es desarrollar aplicaciones cuyas interfaces de usuario aprovechen de buena manera la conexión que hay entre la máquina y el usuarios, empleando para ello herramientas como "Processing", "P5.js", "Arduino", entre otros.
 
-![Image of fast.ai logo](images/logo.png)
+![Ejemplo de "UI"](images/logo.png)
 
-## This is a title
+## Enunciado de prácticas
 
-And you can include links, like this [link to fast.ai](https://www.fast.ai). Posts will appear after this file. 
+[Enunciados de prácticas](https://ncvt-aep.ulpgc.es/cv/ulpgctp21/pluginfile.php/412240/mod_resource/content/37/CIU_Pr_cticas.pdf).
 
-*Probando*
