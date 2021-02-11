@@ -4,5 +4,5 @@ Bienvenido a este blog en el que se presentarán las diversas prácticas realiza
 
 ## Enunciado de prácticas
 
-[Enunciados de prácticas](https://ncvt-aep.ulpgc.es/cv/ulpgctp21/pluginfile.php/412240/mod_resource/content/37/CIU_Pr_cticas.pdf).
+[Enunciados de prácticas](https://ncvt-aep.ulpgc.es/cv/ulpgctp21/pluginfile.php/412240/mod_resource/content/37/CIU_Pr_cticas.pdf)
 
