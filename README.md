@@ -1,3 +1,5 @@
-# Your blog
+# Prácticas de "CIU"
 
-This is the repository for your blog! Click *_config.yml* above to get started and fill in the details. Then click *index.md* and edit it to start creating your home page.
+Todas las prácticas de esta asignatura serán desarrolladas en el siguiente blog, separándolos por publicaciones (posts):
+
+[Acceso a las prácticas](https://josemap-99.github.io)
