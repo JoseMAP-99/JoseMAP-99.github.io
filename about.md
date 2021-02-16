@@ -1,5 +1,5 @@
 # About
 
-Este blog ha sido desarrollado con fines educativos. Estoy disponible para cualquier duda que surja. Gracias.
+Blog creado por estudiante de último año de ingeniería informática. Por tanto, este blog ha sido desarrollado con fines educativos. 
 
 
