@@ -1,9 +1,7 @@
 Bienvenido a este blog en el que se presentarán las diversas prácticas realizadas en la asignatura de "CIU". El objetivo de esta asignatura es desarrollar aplicaciones cuyas interfaces de usuario aprovechen de buena manera la conexión que hay entre la máquina y el usuario, empleando para ello herramientas como "Processing", "P5.js", "Arduino", entre otros.
 
-<figure>
 ![](/images/logo.png "Ejemplo de interfaz de usuario")
-<figcaption> Ejemplo de interfaz de usuario </figcaption>
-</figure>  
+<figcaption> Ejemplo de interfaz de usuario </figcaption> 
  
 A continuación se presenta el documento en el que se enuncian todas las prácticas realizadas.
 
