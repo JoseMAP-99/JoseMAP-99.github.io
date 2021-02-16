@@ -140,6 +140,8 @@ void drawScore(){
   text(scoreInf, middleX - 30, middleYInf + 30); 
 }
 
+boolean corn = false;
+
 void draw () {   
   if (pauseGame){ 
     //------Dibujado del juego-------//
@@ -188,27 +190,31 @@ void draw () {
    //-------Actualización normal de la pelota--------//
    cy += incY; 
    cx += incX;
+         
+   //-------Comprobación del choque de la pelota contra las esquinas de las palas--------//
+   if (!corn && (supXPala - cx > 0 && supXPala - cx <= radius && cy - radius <= supYPala + 10 ||
+              cx - (supXPala + sizePala) > 0 && cx - (supXPala + sizePala) <= radius && cy - radius <= supYPala + 10 ||
+              infXPala - cx > 0 && infXPala - cx <= radius && cy + radius >= infYPala ||
+              cx - (infXPala + sizePala) > 0 && cx - (infXPala + sizePala) <= radius && cy + radius >= infYPala)) {
+       incX =- incX;
+       incY =- incY;
+       pingPong.play(); 
+       corn = true;
    
-   //-------Comprobación del choque de la pelota contra las palas--------// 
-   if (cy - radius <= supYPala + 10 && cx >= supXPala && cx <= supXPala + sizePala ||
-       cy + radius >= infYPala && cx >= infXPala && cx <= infXPala + sizePala) {    
-        incY =- incY;     
-        pingPong.play();
-        
    //-------Comprobación del choque de la pelota contra las paredes laterales---------//
    } else if (cx + radius >= sizeX-border || cx - radius <= border) {
        incX =- incX;     
        knockBall.play();
+       corn = false;
        
-   //-------Comprobación del choque de la pelota contra las esquinas de las palas--------//
-   }else if (cx + radius >= supXPala && cx - radius <= supXPala + sizePala && cy - radius <= supYPala + 10 || 
-             cx + radius >= infXPala && cx - radius <= infXPala + sizePala && cy + radius >= infYPala) {
-       incX =- incX;
-       incY =- incY;
-       pingPong.play();
+   //-------Comprobación del choque de la pelota contra las palas--------// 
+   } else if (!corn && (cy - radius <= supYPala + 10 && cx >= supXPala && cx <= supXPala + sizePala ||
+       cy + radius >= infYPala && cx >= infXPala && cx <= infXPala + sizePala)) {    
+        incY =- incY;     
+        pingPong.play();
        
    //----------Comprobación si la posición de la pelota está fuera del área de juego----------//
-   }else if(cy < border || cy > sizeY-border){  
+   } else if(cy < border || cy > sizeY-border){  
      
      //--------Actualización del puntaje según la posición Y de la pelota-------//
      if (cy < border) {
