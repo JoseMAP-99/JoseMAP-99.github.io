@@ -89,10 +89,11 @@ void resetGame(){
   supYPala = border;
   infXPala = (sizeX/2) - (sizePala/2);
   infYPala = tableY + 10;
-  jump = 20; //Velocidad de palas  
+  jump = 5; //Velocidad de palas  
   
   radius = 10;
   fastBall = 3;
+  for (int i = 0; i < pressed.length; i++) pressed[i] = false;
   selectPlayer();  
 }  
 
@@ -141,6 +142,7 @@ void drawScore(){
 }
 
 boolean corn = false;
+boolean [] pressed = new boolean[4];
 
 void draw () {   
   if (pauseGame){ 
@@ -186,6 +188,7 @@ void draw () {
    drawPala();
    drawBall(); 
    drawScore();
+   movePala();
    
    //-------Actualización normal de la pelota--------//
    cy += incY; 
@@ -257,23 +260,60 @@ void mousePressed () {
   gifFile.finish(); 
 }
 
-void keyPressed() {
-  if (key == CODED){
-    if (keyCode == LEFT && !pauseGame){
-      if (infXPala > border) infXPala -= jump;
-    }else if (keyCode == RIGHT && !pauseGame){
-      if (infXPala + sizePala < sizeX-border) infXPala += jump;
-    }
-  } else {
-    if (key == 'A' || key == 'a' && !pauseGame){
-      if (supXPala > border) supXPala -= jump;
-    }else if (key == 'D' || key == 'd' && !pauseGame){
-      if (supXPala + sizePala < sizeX-border) supXPala += jump;
-    }else if (key == 'R' || key == 'r'){
-      pauseGame = false;
-      resetGame(); 
-    }else if (key == 'P' || key == 'p'){
-      pauseGame = !pauseGame;
+void setMovement(int k, boolean b) {
+  if (!pauseGame){
+    switch (k) {
+      case 'a':
+        pressed[0] = b;
+        break;
+      case 'A':
+        pressed[0] = b;
+        break;
+      case 'd':
+        pressed[1] = b;
+        break;
+      case 'D':
+        pressed[1] = b;
+        break;
+      case CODED:
+        if (keyCode == LEFT){
+          pressed[2] = b;
+        }else if (keyCode == RIGHT){
+          pressed[3] = b;
+        }       
     }
   }
+}
+
+void movePala() {
+  if (pressed[0]) {
+    if (supXPala > border) supXPala -= jump;
+  }else
+  
+  if (pressed[1]){
+    if (supXPala + sizePala < sizeX-border) supXPala += jump;
+  }
+  
+  if (pressed[2]){
+    if (infXPala > border) infXPala -= jump;
+  }
+  
+  if (pressed[3]){
+    if (infXPala + sizePala < sizeX-border) infXPala += jump;
+  }
+}
+
+void keyPressed() {
+  setMovement(key, true);
+  
+  if (key == 'R' || key == 'r'){
+    pauseGame = false;
+    resetGame(); 
+  }else if (key == 'P' || key == 'p'){
+    pauseGame = !pauseGame;
+  }  
+}
+
+void keyReleased() {
+  setMovement(key, false);
 }
