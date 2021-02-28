@@ -32,6 +32,25 @@ Una vez se hayan dibujado todos los puntos deseados, el usuario deberá hacer cl
 | - | - |
 | ![](/images/solid_revolution/solo-puntos.PNG "Fig. 2: Introducción de los puntos de la figura") | ![](/images/solid_revolution/figura.PNG "Fig. 3: Presentación de la figura obtenida")
 
+En la interfaz se ha incluido dos textos informativos, uno de ellos se corresponde con el número de puntos dibujados por el usuario, el otro está relacionado con el relleno de la figura final, pues representa el espaciado existente entre triángulos, por defecto está colocado a 20, sin embargo, éste puede aumentar o disminuirse según se desee.
+
+Y, finalmente, se ha incluido un botón de ayuda dentro de la interfaz, el cual muestra al usuario los controles disponibles y enseña un caso de uso de la aplicación. La aplicación abre esta vista de ayuda en el primer acceso (figura 4).
+
+![](/images/solid_revolution/ayuda.PNG "Fig. 4: Manual de uso y ayuda de la aplicación")
+
+<br/>
+
+### Controles
+
+Tal como se ha mencionado anteriormente, los controles están disponibles desde la vista de ayuda de la aplicación (figura 4). Los distintos controles disponibles permiten interactuar al usuario con la figura final, permitiéndole rotarla, aplicarle un *zoom* o añadir o disminuir la separación existente entre triángulos. 
+
+Click izquierdo: En el lado derecho del tablero, dibuja un nuevo punto. En el lado izquierdo del tablero, genera el sólido de revolución.
+Click derecho: En cualquier parte del tablero, limpia la pantalla eliminando la figura actual y sus puntos.
+Rueda del ratón: Realiza un *zoom* sobre la figura, según el sentido del movimiento.
+Tecla 'A'-'D' o 'Left'-'Right.': Cuando la figura está dibujada, rota la figura horizontalmente.
+Tecla 'S'-'W' o 'Down'-'Up': Cuando la figura está dibujada, rota la figura verticalmente.
+Tecla 'M'-'L': Cuando la figura está dibujada, añade o quita separación entre triángulos del relleno.
+
 <br/>
 <br/>
 
