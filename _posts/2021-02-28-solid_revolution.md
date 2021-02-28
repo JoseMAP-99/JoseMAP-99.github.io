@@ -40,7 +40,7 @@ Y, finalmente, se ha incluido un botón de ayuda dentro de la interfaz, el cual 
 
 <br/>
 
-### Controles
+#### Controles
 
 Tal como se ha mencionado anteriormente, los controles están disponibles desde la vista de ayuda de la aplicación (figura 4). Los distintos controles disponibles permiten interactuar al usuario con la figura final, permitiéndole rotarla, aplicarle un *zoom* o añadir o disminuir la separación existente entre triángulos. 
 
