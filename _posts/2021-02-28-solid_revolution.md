@@ -15,14 +15,22 @@ Para el desarrollo de esta práctica se ha solicitado la realización de una apl
 
 ## Introducción
 
-Se denomina sólido de revolución a cualquier cuerpo que pueda obtenerse mediante una operación geométrica de rotación de una superficie plana alrededor de una recta que esté contenida en su mismo plano. La figura resultante es un sólido que posee simetría, razón por la cual, para su implementación en *Processing*, se dividirá el tablero en dos secciones con un separador vertical, dejando el lado derecho habilitado para el dibujado de los puntos de la figura deseada. Una vez se hayan dibujado los puntos requeridos, el usuario podrá terminar la acción y obtener el sólido de revolución resultante.
+Se denomina sólido de revolución a cualquier cuerpo que pueda obtenerse mediante una operación geométrica de rotación de una superficie plana alrededor de una recta que esté contenida en su mismo plano. La figura resultante es un sólido que posee simetría, razón por la cual, para su implementación en *Processing*, se dividirá el tablero en dos secciones con un separador vertical, dejando el lado derecho habilitado para el dibujado de los puntos de la mitad de la figura deseada. Una vez se hayan dibujado los puntos requeridos, el usuario podrá terminar la acción y obtener el sólido de revolución resultante. 
+
+Finalmente, el usuario podrá interactuar de diversas maneras con la figura final o, simplemente, reiniciar el tablero y volver a dibujar unos nuevos puntos.
 
 <br/>
 <br/>
 
 ## Propuesta de diseño
 
-Aquí la propuesta de diseño
+El diseño elegido para este proyecto está constituido por un tablero de interacción de fondo negro, una línea vertical divisoria blanca situada en la mitad del tablero, además de 2 textos de información y un botón de ayuda o manual de uso de la aplicación. El usuario podrá dibujar todos los puntos que desee en el lado derecho del tablero, los cuales se irán uniendo con una línea blanca, tal como se puede apreciar en la figura 2.
+
+Una vez se hayan dibujado todos los puntos deseados, el usuario deberá hacer click en el lado izquierdo del tablero para mostrar el sólido de revolución generado (figura 3). La figura generada se moverá acorde a la posición del ratón, y, cuando se desee, puede pulsar el click derecho para reiniciar el tablero y habilitar de nuevo la introducción de nuevos puntos.
+
+| Recogida de puntos | Sólido de revolución |
+| - | - |
+| ![](/images/solid_revolution/solo-puntos.PNG "Fig. 2: Introducción de los puntos de la figura") | ![](/images/solid_revolution/figura.PNG "Fig. 3: Presentación de la figura obtenida")
 
 <br/>
 <br/>
