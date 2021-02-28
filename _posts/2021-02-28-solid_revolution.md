@@ -38,25 +38,25 @@ Y, finalmente, se ha incluido un botón de ayuda dentro de la interfaz, el cual 
 
 ![](/images/solid_revolution/ayuda.PNG "Fig. 4: Manual de uso y ayuda de la aplicación")
 
-<br/>
-
 #### Controles
 
 Tal como se ha mencionado anteriormente, los controles están disponibles desde la vista de ayuda de la aplicación (figura 4). Los distintos controles disponibles permiten interactuar al usuario con la figura final, permitiéndole rotarla, aplicarle un *zoom* o añadir o disminuir la separación existente entre triángulos. 
 
-Click izquierdo: En el lado derecho del tablero, dibuja un nuevo punto. En el lado izquierdo del tablero, genera el sólido de revolución.
-Click derecho: En cualquier parte del tablero, limpia la pantalla eliminando la figura actual y sus puntos.
+. Click izquierdo: En el lado derecho del tablero, dibuja un nuevo punto. En el lado izquierdo del tablero, genera el sólido de revolución.
+. Click derecho: En cualquier parte del tablero, limpia la pantalla eliminando la figura actual y sus puntos.
 Rueda del ratón: Realiza un *zoom* sobre la figura, según el sentido del movimiento.
-Tecla 'A'-'D' o 'Left'-'Right.': Cuando la figura está dibujada, rota la figura horizontalmente.
-Tecla 'S'-'W' o 'Down'-'Up': Cuando la figura está dibujada, rota la figura verticalmente.
-Tecla 'M'-'L': Cuando la figura está dibujada, añade o quita separación entre triángulos del relleno.
+. Tecla 'A'-'D' o 'Left'-'Right.': Cuando la figura está dibujada, rota la figura horizontalmente.
+. Tecla 'S'-'W' o 'Down'-'Up': Cuando la figura está dibujada, rota la figura verticalmente.
+. Tecla 'M'-'L': Cuando la figura está dibujada, añade o quita separación entre triángulos del relleno.
 
 <br/>
 <br/>
 
 ## Recursos empleados
 
-Aquí los recursos 
+Para la realización de esta práctica se ha empleado *Processing*[^1], que se define como un lenguaje de programación y entorno de desarrollo integrado de código abierto basado en Java. Este lenguaje se ha utilizado para el desarollo de forma local, sin embargo, para poder publicar el proyecto a través de internet es necesario emplear *p5.js*[^2], que se define como una librería *JavaScript* perteneciente al lado del cliente que posibilita la creación de experiencias interactivas y gráficas, basado en el núcleo de *Processing*.
+
+Por tanto, el proyecto ha sido desarrollado totalmente en *Processing* y, dado que *p5.js* tiene su base en el primero, su respectiva conversión es simple. Para realizar esta conversión se he utilizado la herramienta online *HerokuApp*[^3].
 
 <br/>
 <br/>
