@@ -2,7 +2,7 @@
 
 `Autor: José María Amusquívar Poppe`
 
-Para el desarrollo de esta práctica se ha solicitado la realización de una aplicación que permita la creación de cualquier sólido de revolución, cuyo centro de rotación se encuentra en el eje "Y" (figura 1). 
+Para el desarrollo de esta práctica se ha solicitado la realización de una aplicación que permita la creación de cualquier sólido de revolución, cuyo eje de revolución se encuentra en el eje "Y" (figura 1). 
 
 ![](/images/solid_revolution/principal.PNG "Fig. 1: Interfaz de usuario de la aplicación")
 
@@ -15,7 +15,7 @@ Para el desarrollo de esta práctica se ha solicitado la realización de una apl
 
 ## Introducción
 
-Aquí introducción
+Se denomina sólido de revolución a cualquier cuerpo que pueda obtenerse mediante una operación geométrica de rotación de una superficie plana alrededor de una recta que esté contenida en su mismo plano. La figura resultante es un sólido que posee simetría, razón por la cual, para su implementación en *Processing*, se dividirá el tablero en dos secciones con un separador vertical, dejando el lado derecho habilitado para el dibujado de los puntos de la figura deseada. Una vez se hayan dibujado los puntos requeridos, el usuario podrá terminar la acción y obtener el sólido de revolución resultante.
 
 <br/>
 <br/>
@@ -66,6 +66,8 @@ Aquí los GIFS
 <div style="display: flex; justify-content: center">
   <iframe width="605" height="605" src="https://editor.p5js.org/JoseMAP-99/embed/1aYzzBgZt"></iframe>
 </div>
+
+<br/>
 
 El juego ha sido recortado, adaptado a P5.js
 
