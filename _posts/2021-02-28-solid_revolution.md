@@ -42,12 +42,17 @@ Y, finalmente, se ha incluido un botón de ayuda dentro de la interfaz, el cual 
 
 Tal como se ha mencionado anteriormente, los controles están disponibles desde la vista de ayuda de la aplicación (figura 4). Los distintos controles disponibles permiten interactuar al usuario con la figura final, permitiéndole rotarla, aplicarle un *zoom* o añadir o disminuir la separación existente entre triángulos. 
 
-. Click izquierdo: En el lado derecho del tablero, dibuja un nuevo punto. En el lado izquierdo del tablero, genera el sólido de revolución.
-. Click derecho: En cualquier parte del tablero, limpia la pantalla eliminando la figura actual y sus puntos.
-Rueda del ratón: Realiza un *zoom* sobre la figura, según el sentido del movimiento.
-. Tecla 'A'-'D' o 'Left'-'Right.': Cuando la figura está dibujada, rota la figura horizontalmente.
-. Tecla 'S'-'W' o 'Down'-'Up': Cuando la figura está dibujada, rota la figura verticalmente.
-. Tecla 'M'-'L': Cuando la figura está dibujada, añade o quita separación entre triángulos del relleno.
+* **Click izquierdo:** En el lado derecho del tablero, dibuja un nuevo punto. En el lado izquierdo del tablero, genera el sólido de revolución.
+
+* **Click derecho:** En cualquier parte del tablero, limpia la pantalla eliminando la figura actual y sus puntos.
+
+* **Rueda del ratón:** Realiza un *zoom* sobre la figura, según el sentido del movimiento.
+
+* **Tecla 'A'-'D' o 'Left'-'Right':** Cuando la figura está dibujada, rota la figura horizontalmente.
+
+* **Tecla 'S'-'W' o 'Down'-'Up':** Cuando la figura está dibujada, rota la figura verticalmente.
+
+* **Tecla 'M'-'L':** Cuando la figura está dibujada, añade o quita separación entre triángulos del relleno.
 
 <br/>
 <br/>
