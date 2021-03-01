@@ -349,9 +349,9 @@ Para consultar el código fuente de la aplicación, puede dirigirse al siguiente
 
 ## Resultados obtenidos
 
-A continuación se muestra la ejecución de la aplicación en *Processing* en formato de GIF.
+A continuación se muestra la ejecución de la aplicación en *Processing* en formato de GIF (figura 5).
 
-![](/images/solid_revolution/funcionamiento.gif "Funcionamiento de la aplicación")
+![](/images/solid_revolution/funcionamiento.gif "Fig. 5: Funcionamiento de la aplicación")
 
 <br/>
 <br/>
