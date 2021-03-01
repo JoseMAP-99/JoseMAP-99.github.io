@@ -291,25 +291,25 @@ Esta clase es la encargada de mostrar y generar todos los textos de la aplicaci�
         fill(255);
         text("HELP", btnXH+5, btnYH+15);
         fill(0);
-      }
-      
-      //-----Funci처n que dibuja los textos en tiempo real en la pantalla de dibujado------//
-      void drawSpaces() {
+    }
+
+    //-----Funci처n que dibuja los textos en tiempo real en la pantalla de dibujado------//
+    void drawSpaces() {
         fill(255);
         text("Spaces: " + nSep, 10, 20); 
         text("Points: " + pos, 10, 40);
         fill(0);
-      }
+    }
 
-      //------Funci처n que dibuja el bot처n de inicio-----//
-      void drawStartButton() {
+    //------Funci처n que dibuja el bot처n de inicio-----//
+    void drawStartButton() {
         fill(0);
         stroke(255);
         rect(btnXS, btnYS, btnWS, btnH);   
         fill(255);
         text("CONTINUE", btnXS+14, btnYS+15);
         fill(0);
-      }
+    }
       
 <br/>
 
