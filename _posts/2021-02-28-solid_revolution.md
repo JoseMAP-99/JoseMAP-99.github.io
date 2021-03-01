@@ -356,7 +356,7 @@ A continuación se muestra la ejecución de la aplicación en *Processing* en fo
 <br/>
 <br/>
 
-## Ejcución en vivo
+## Ejecución en vivo
 
 Debido a que *p5.js* no posee las mismas herramientas que *Processing*, se ha tenido que alterar la aplicación, con el fin de adaptarlo adecuadamente a esta librería. Los controles modificados se listan a continuación.
 
