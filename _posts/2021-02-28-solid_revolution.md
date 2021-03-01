@@ -358,12 +358,9 @@ A continuación se muestra la ejecución de la aplicación en *Processing* en fo
 
 ## Ejcución en vivo
 
-Debido a que *p5.js* no posee las mismas herramientas que *Processing*, se ha tenido que alterar la aplicación, con el fin de adaptarlo adecuadamente a esta librería.
+Debido a que *p5.js* no posee las mismas herramientas que *Processing*, se ha tenido que alterar la aplicación, con el fin de adaptarlo adecuadamente a esta librería. Los controles modificados se listan a continuación.
 
-{% include info.html text="'A' y 'D' o 'LEFT' y 'RIGHT' controlan la rotación horizontal"%}
-{% include info.html text="'S' y 'W' o 'DOWN' y 'UP' controlan la rotación vertical"%}
-{% include info.html text="'+' y '-' controlan el zoom"%}
-{% include info.html text="'M' y 'L' controlan la separación de triángulos de la figura"%}
+{% include info.html text="Las teclas '+' y '-' controlan el zoom"%}
 {% include info.html text="Click derecho o 'ENTER' para reiniciar"%}
 
 <div style="display: flex; justify-content: center">
