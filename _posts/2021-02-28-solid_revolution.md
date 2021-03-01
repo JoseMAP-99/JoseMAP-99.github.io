@@ -376,6 +376,9 @@ Si desea descargar el código fuente, puede hacerlo desde el siguiente enlace:
 
 [Descarga del código fuente](https://downgit.github.io/#/home?url=https://github.com/JoseMAP-99/JoseMAP-99.github.io/tree/master/codes/SOLID)
 
+<br/>
+<br/>
+
 ## Referencias
 
 [^1]: [Página de consulta sobre *Processing*](https://processing.org/)
