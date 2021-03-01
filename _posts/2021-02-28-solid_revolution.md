@@ -349,24 +349,26 @@ Para consultar el código fuente de la aplicación, puede dirigirse al siguiente
 
 ## Resultados obtenidos
 
-Aquí los GIFS
+A continuación se muestra la ejecución de la aplicación en *Processing* en formato de GIF.
+
+![](/images/solid_revolution/funcionamiento.gif "Funcionamiento de la aplicación")
 
 <br/>
 <br/>
 
 ## Ejcución en vivo
 
-{% include info.html text="Las teclas 'A' y 'D' controlan la pala superior, el curso 'Izquierdo' y 'Derecho' la pala inferior" %}
-{% include alert.html text="La ejecución sólo está disponible para ordenadores" %}
-{% include alert.html text="Se debe hacer 'click' sobre el recuadro del videojuego para poder jugarlo" %}
+Debido a que *p5.js* no posee las mismas herramientas que *Processing*, se ha tenido que alterar la aplicación, con el fin de adaptarlo adecuadamente a esta librería.
+
+{% include info.html text="'A' y 'D' o 'LEFT' y 'RIGHT' controlan la rotación horizontal"%}
+{% include info.html text="'S' y 'W' o 'DOWN' y 'UP' controlan la rotación vertical"%}
+{% include info.html text="'+' y '-' controlan el zoom"%}
+{% include info.html text="'M' y 'L' controlan la separación de triángulos de la figura"%}
+{% include info.html text="Click derecho o 'ENTER' para reiniciar"%}
 
 <div style="display: flex; justify-content: center">
   <iframe width="605" height="605" src="https://editor.p5js.org/JoseMAP-99/embed/1aYzzBgZt"></iframe>
 </div>
-
-<br/>
-
-El juego ha sido recortado, adaptado a P5.js
 
 <br/>
 <br/>
