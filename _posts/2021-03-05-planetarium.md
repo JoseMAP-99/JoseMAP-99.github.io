@@ -2,9 +2,9 @@
 
 `Autor: José María Amusquívar Poppe`
 
-Para el desarrollo de esta práctica se ha solicitado la realización de una aplicación que permita la creación de cualquier sólido de revolución, cuyo eje de revolución se encuentra en el eje "Y" (figura 1). 
+Para el desarrollo de esta práctica se ha solicitado la realización de un sistema de planetas, las cuales giran al rededor de un planeta central. Para mayor simplicidad, se ha cogido de ejemplo el Sistema Solar, en el que el planeta central es el Sol. Dado que replicar a escala las medidas exactas resultaría en un sistema complejo de visualizar, se ha optado por alterar las medidas, tanto de las distancias al Sol como de sus radios (figura 1).
 
-![](/images/solid_revolution/principal.PNG "Fig. 1: Interfaz de usuario de la aplicación")
+![](/images/planetarium/principal.PNG "Fig. 1: Interfaz de usuario de la aplicación")
 
 <br/>
 
