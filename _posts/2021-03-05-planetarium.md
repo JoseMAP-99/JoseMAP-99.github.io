@@ -32,9 +32,13 @@ La primera vista a explicar es la del Sistema solar (vista de visualización), e
 
 La segunda vista se corresponde con la del modo creación, en la que se presenta una estrella central por defecto. En esta vista el usuario podrá añadir los planetas que desee simplemente pulsando *click* izquierdo en la posición requerida, además que podrá limpiar todos los planetas creados o, simplemente, el último, y, también, podrá aumentar o reducir el radio del planeta a crear (figura 3). En esta vista se presentan los mismo botones que en la vista de visualización, con las mismas funcionalidades, además de un contador de planetas y el valor del radio actual.
 
-| Vista de visualización | Vista de creación |
-| - | - |
-| ![](/images/planetarium/vVisualizacion.PNG "Fig. 2: Vista del Sistema solar") | ![](/images/planetarium/vCreacion.PNG "Fig. 3: Vista con planetas personalizados")
+| Vista de visualización |
+| - |
+| ![](/images/planetarium/vVisualizacion.PNG "Fig. 2: Vista del Sistema solar") |
+
+| Vista de creación |
+| - |
+| ![](/images/planetarium/vCreacion.PNG "Fig. 3: Vista con planetas personalizados") |
 
 La tercera vista, ya mencionada anteriormente, es la de ayuda, accesible desde el botón *HELP* o pulsando la tecla 'H' cuando se necesite. En esta vista se explica de forma general cómo funciona la aplicación mostrando los controles disponibles (figura 4).
 
