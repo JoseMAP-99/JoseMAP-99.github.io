@@ -2,7 +2,7 @@
 
 `Autor: José María Amusquívar Poppe`
 
-Para el desarrollo de esta práctica se ha solicitado la realización de un sistema de planetas, las cuales giran al rededor de un planeta central. Para mayor simplicidad, se ha cogido de ejemplo el Sistema Solar, en el que el planeta central es el Sol. Dado que replicar a escala las medidas exactas resultaría en un sistema complejo de visualizar, se ha optado por alterar las medidas, tanto de las distancias al Sol como de sus radios (figura 1).
+Para el desarrollo de esta práctica se ha solicitado la realización de un sistema de planetas, los cuales orbitan al rededor de una estrella central. Para mayor simplicidad, se ha cogido de ejemplo el Sistema solar, en el que el planeta central es el Sol. Dado que replicar a escala las medidas exactas resultaría en un sistema complejo de visualizar, se ha optado por alterar las medidas, tanto las distancias al Sol como los radios de cada planeta (figura 1).
 
 ![](/images/planetarium/principal.PNG "Fig. 1: Interfaz de usuario de la aplicación")
 
@@ -15,44 +15,44 @@ Para el desarrollo de esta práctica se ha solicitado la realización de un sist
 
 ## Introducción
 
-Se denomina sólido de revolución a cualquier cuerpo que pueda obtenerse mediante una operación geométrica de rotación de una superficie plana alrededor de una recta que esté contenida en su mismo plano. La figura resultante es un sólido que posee simetría, razón por la cual, para su implementación en *Processing*, se dividirá el tablero en dos secciones con un separador vertical, dejando el lado derecho habilitado para el dibujado de los puntos de la mitad de la figura deseada. Una vez se hayan dibujado los puntos requeridos, el usuario podrá terminar la acción y obtener el sólido de revolución resultante. 
+El Sistema solar está compuesto por una estrella central, el Sol, que acapará más de 99% de la masa total del sistema, seguido de 8 planetas que ocupan la mayor parte de la masa restante. Estos planetas, ordenados según cercanía al Sol, son: Mercurio, Venus, Tierra, Marte, Júpiter, Saturno, Urano y Neptuno. 
 
-Finalmente, el usuario podrá interactuar de diversas maneras con la figura final o, simplemente, reiniciar el tablero y volver a dibujar unos nuevos puntos.
+Para poder dibujar estos planetas se puede hacer uso de la primitiva 3D *sphere()* o *createShape(SPHERE)*, señanalando en ambos casos es radio deseado de la esfera, habiendo aplicado una función *translate()* previamente para situar el centro del planeta en el punto deseado.
+
+Finalmente, se ha incorporado tres vistas, en la primera el usuario visualiza el Sistema solar e interactúa con él, en la segunda vista el usuario tiene la posibilidad de crear su propio sistema, alterando para ello el radio de cada planeta y su disposición, y la última vista es, simplemente, un menú de ayuda o manual de uso.
 
 <br/>
 <br/>
 
 ## Propuesta de diseño
 
-El diseño elegido para este proyecto está constituido por un tablero de interacción de fondo negro, una línea vertical divisoria blanca situada en la mitad del tablero, además de 2 textos de información y un botón de ayuda o manual de uso de la aplicación. El usuario podrá dibujar todos los puntos que desee en el lado derecho del tablero, los cuales se irán uniendo con una línea blanca, tal como se puede apreciar en la figura 2.
+El diseño elegido para este proyecto está constituido por un espacio de dibujo y visualización cuyo fondo se corresponde con el del espacio exterior. 
 
-Una vez se hayan dibujado todos los puntos deseados, el usuario deberá hacer click en el lado izquierdo del tablero para mostrar el sólido de revolución generado (figura 3). La figura generada se moverá acorde a la posición del ratón, y, cuando se desee, puede pulsar el click derecho para reiniciar el tablero y habilitar de nuevo la introducción de nuevos puntos.
+La primera vista a explicar es la del Sistema solar (vista de visualización), en la que cada planeta gira en sus respectivas órbitas, además de estar presente la Luna, los anillos de Saturno, y el querido Plutón. Cada uno de estos planetas posee una textura única semejante al presente en su superficie, señalando con circunferencias blancas las órbitas que describe cada uno (figura 2). En esta vista, el usuario podrá aplicar un *zoom* a todo el Sistema o, bien, rotarlo verticalmente, también dispondrá de 2 botones situados en la parte superior, el primero, *CHANGE*, tiene la funcionalidad de cambiar del modo visualización al modo de creación, o viseceversa; el segundo botón es el de ayuda, *HELP*, que abre una vista en la que el usuario podrá leer el manual de uso así como los controles disponibles.
 
-| Recogida de puntos | Sólido de revolución |
+La segunda vista se corresponde con la del modo creación, en la que se presenta una estrella central por defecto. En esta vista el usuario podrá añadir los planetas que desee simplemente pulsando *click* izquierdo en la posición requerida, además que podrá limpiar todos los planetas creados o, simplemente, el último, y, también, podrá aumentar o reducir el radio del planeta a crear (figura 3). En esta vista se presentan los mismo botones que en la vista de visualización, con las mismas funcionalidades, además de un contador de planetas y el valor del radio actual.
+
+| Vista de visualización | Vista de creación |
 | - | - |
-| ![](/images/solid_revolution/solo-puntos.PNG "Fig. 2: Introducción de los puntos de la figura") | ![](/images/solid_revolution/figura.PNG "Fig. 3: Presentación de la figura obtenida")
+| ![](/images/planetarium/vVisualizacion.PNG "Fig. 2: Vista del Sistema solar") | ![](/images/planetarium/vCreacion.PNG "Fig. 3: Vista con planetas personalizados")
 
-En la interfaz se ha incluido dos textos informativos, uno de ellos se corresponde con el número de puntos dibujados por el usuario, el otro está relacionado con el relleno de la figura final, pues representa el espaciado existente entre triángulos, por defecto está colocado a 20, sin embargo, éste puede aumentar o disminuirse según se desee.
+La tercera vista, ya mencionada anteriormente, es la de ayuda, accesible desde el botón *HELP* o pulsando la tecla 'H' cuando se necesite. En esta vista se explica de forma general cómo funciona la aplicación mostrando los controles disponibles (figura 4).
 
-Y, finalmente, se ha incluido un botón de ayuda dentro de la interfaz, el cual muestra al usuario los controles disponibles y enseña un caso de uso de la aplicación. La aplicación abre esta vista de ayuda en el primer acceso (figura 4).
-
-![](/images/solid_revolution/ayuda.PNG "Fig. 4: Manual de uso y ayuda de la aplicación")
+![](/images/planetarium/vAyuda.PNG "Fig. 4: Manual de uso y ayuda de la aplicación")
 
 #### Controles
 
-Tal como se ha mencionado anteriormente, los controles están disponibles desde la vista de ayuda de la aplicación (figura 4). Los distintos controles disponibles permiten interactuar al usuario con la figura final, permitiéndole rotarla, aplicarle un *zoom* o añadir o disminuir la separación existente entre triángulos. 
+Tal como se ha mencionado anteriormente, los controles están disponibles desde la vista de ayuda de la aplicación (figura 4). Los distintos controles disponibles permiten interactuar al usuario con el Sistema solar o su propia creación, entre estas interacciones está presenta la acción de rotar, aplicar un *zoom*, alterar el radio del planeta, limpiar los planetas o sólo el último, entre otros.
 
-* **Click izquierdo:** En el lado derecho del tablero, dibuja un nuevo punto. En el lado izquierdo del tablero, genera el sólido de revolución.
+* **Click izquierdo:** Modo creación. Permite crear un nuevo planeta.
 
-* **Click derecho:** En cualquier parte del tablero, limpia la pantalla eliminando la figura actual y sus puntos.
+* **Click derecho:** Modo creación. Limpia la pantalla eliminando los planetas creados.
 
 * **Rueda del ratón:** Realiza un *zoom* sobre la figura, según la dirección de la rueda del ratón.
 
-* **Tecla 'A'-'D' o 'Left'-'Right':** Cuando la figura está dibujada, rota la figura horizontalmente.
+* **Tecla 'S'-'W' o 'Down'-'Up':** Rota la figura verticalmente.
 
-* **Tecla 'S'-'W' o 'Down'-'Up':** Cuando la figura está dibujada, rota la figura verticalmente.
-
-* **Tecla 'M'-'L':** Cuando la figura está dibujada, añade o quita separación entre triángulos del relleno.
+* **Tecla '+'-'-':** Modo creación. Aumenta o reduce el radio del siguiente planeta.
 
 <br/>
 <br/>
