@@ -455,7 +455,7 @@ Para consultar el código fuente de la aplicación, puede dirigirse al siguiente
 
 A continuación se muestra la ejecución de la aplicación en *Processing* en formato de GIF (figura 5).
 
-![](/images/solid_revolution/funcionamiento.gif "Fig. 5: Funcionamiento de la aplicación")
+![](/images/planetarium/funcionamiento.gif "Fig. 5: Funcionamiento de la aplicación")
 
 <br/>
 <br/>
