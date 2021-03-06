@@ -478,7 +478,7 @@ Debido a que *p5.js* no posee las mismas herramientas que *Processing*, se ha te
 
 Si desea descargar el código fuente, puede hacerlo desde el siguiente enlace:
 
-[Descarga del código fuente](https://downgit.github.io/#/home?url=https://github.com/JoseMAP-99/JoseMAP-99.github.io/tree/master/codes/SOLID)
+[Descarga del código fuente](https://downgit.github.io/#/home?url=https://github.com/JoseMAP-99/JoseMAP-99.github.io/tree/master/codes/PLANETARIUM)
 
 <br/>
 <br/>
