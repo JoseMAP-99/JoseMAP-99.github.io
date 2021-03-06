@@ -42,7 +42,9 @@ La segunda vista se corresponde con la del modo creación, en la que se presenta
 
 La tercera vista, ya mencionada anteriormente, es la de ayuda, accesible desde el botón *HELP* o pulsando la tecla 'H' cuando se necesite. En esta vista se explica de forma general cómo funciona la aplicación mostrando los controles disponibles (figura 4).
 
-![](/images/planetarium/vAyuda.PNG "Fig. 4: Manual de uso y ayuda de la aplicación")
+| Vista de ayuda |
+| - |
+| ![](/images/planetarium/vAyuda.PNG "Fig. 4: Manual de uso y ayuda de la aplicación") |
 
 #### Controles
 
@@ -67,9 +69,11 @@ Para la realización de esta práctica se ha empleado *Processing*[^1], que se d
 
 Por tanto, el proyecto ha sido desarrollado totalmente en *Processing* y, dado que *p5.js* tiene su base en el primero, su respectiva conversión es simple. Para realizar esta conversión se he utilizado la herramienta online *HerokuApp*[^3].
 
+------------REVISAR con p5.js-------------
 El código del proyecto ha sido alterado en su versión en *p5.js*, debido a que esta librería no posee herramientas idénticas a las de *Processing*, pero sí equivalentes, tal es el caso de *PVector* que su equivalente en *p5.js* es la función *createVector()*, o la colección *ArrayList* que en *p5.js* puede ser reemplazada sencillamente con un array []. Sin embargo, ha habido cambios más drásticos como es el caso de la librería *Pshape* y sus transformaciones, pues en *p5.js* estas transformaciones deben ser asignadas mediante una variable y se posibilita el uso de las funciones *push()* y *pop()*.
 
 Entre los cambios realizados de más importancia se encuentra el hecho que, a diferencia de *Processing*, para usar gráficos de esta estilo en *p5.js* es requerido trabajar con *WEBGL*, lo que ocasiona cambios respecto a la orientación de los ejes de coordenadas. Para solventar esto, se empleó un *translate()* para mover el eje de coordenadas a la esquina superior izquierda, tal y como ocurre en *Processing*.
+----------REVISAR con p5.js----------------
 
 Para obtener el GIF del videojuego se optó por la librería *gifAnimation*, sin embargo, debido a problemas de lentitud en la captura de *frames*, se optó por obtener el GIF grabando la pantalla y pasándolo a dicho formato final.
 
@@ -78,99 +82,145 @@ Para obtener el GIF del videojuego se optó por la librería *gifAnimation*, sin
 
 ## Desarrollo del código
 
-El código de esta práctica se estructura en tres clases: la clase principal, la clase de ayuda y la clase de puntos. La primera alberga los métodos importantes del proyecto, la segunda se trata de un objeto que se encarga de mostrar los textos de la aplicación, y la tercera es un objeto que se encarga de almacenar y tratar los puntos introducidos por el usuario.
+El código de esta práctica se estructura en cuatro clases: la clase principal, la clase de ayuda, la clase de planetas y la clase Planeta. La primera alberga los métodos importantes del proyecto, la segunda se trata de un objeto que se encarga de mostrar los textos de la aplicación, la tercera es un objeto que se encarga de almacenar y tratar todos los planetas existentes a través de una colección, y la cuarta es un objeto que representa a cada planeta.
 
 A continuación se procederá a explicar el código realizado en *Processing*, empezando con la clase principal:
 
 #### Variables empleadas
 Para conseguir que la aplicación funcione adecuadamente, se ha empleado una serie de variables con determinadas funciones, tal y como se puede apreciar en el siguiente fragmento de código:
 
-    //-----------Configuración de pantalla---------//
-    int sizeX, sizeY; //Dimensiones de la ventana
+    //--------Objetos personalizados----------//
+    Points points; // Colección de planetas introducidos por el usuario
+    Points sats; // Colección de satélites generados para el Sistema solar
+    Points solar; // Colección de planetas correspondiente al Sistema solar
+    Planet center; // Estrella central por defecto en modo creación
+    Help help; // Objeto para mostras mensajes de ayuda
 
-    //----------Figuras creadas----------//
-    PShape solidoForm, group; //Shape sin relleno, y Shape que agrupa todas las figuras
+    //-------Variables para el fondo del planetario--------//
+    PImage backG;
+    int sizeX, sizeY;
 
-    //---------Objetos creados----------//
-    Points points; // Objeto que trata los puntos introducidos
-    Help help; // Objeto que se encarga de mostrar los textos
+    //--------Variables para controlar el zoom aplicado---------//
+    float zoom, countZoom, minScroll, maxScroll;
 
-    //-----------Variables de estado----------//
-    boolean printed; // Variable que señala si hay un sólido dibujado
-    boolean btnHelp; // Variable que señala si está activa la vista de ayuda
+    //-------Variables para controlar el radio de los planetas creados--------//
+    int radius, minRadius, maxRadius;
 
-    //-----------Variables de configuración----------//
-    int pos, sizePoint; // Número de puntos, y tamaño de puntos a dibujar
-    int maxScroll, minScroll, scrollMouse; // Valor máximo y mínimo para la rueda del ratón, y valor actual 
-    int nSep; // Variable que guarda la separación existente entre triángulos
+    //-------Variable que controla la roación vertical-------//
+    float rotateX;
 
-    //------------Variable para las pulsaciones de teclas---------//
-    boolean [] keys = new boolean[6]; // Variable que almacena las pulsaciones de teclas
+    //--------Contadores de planetas para ambos modos---------------//
+    int pos, posIni;
 
-<br/>
+    //--------Variables de estado----------//
+    boolean btnHelp, newDraw;
 
-#### Función *settings()*
+    //-------Vector para controlar las pulsaciones---------//
+    boolean [] keys = new boolean[5];
 
-Esta función es necesaria si se desea tratar las dimensiones de la ventana como variables, ya que esta función es ejecutada antes que la función *setup()*, consiguiendo así guardar las dimensiones de la ventana en variables para usos futuros.
+    //-------Listas de valores para el Sistema solar-----------//
+    float [] radiusP, distP; // Radios y distancias al Sol
+    String [] paths; // Rutas de texturas de cada planeta
 
-    void settings() {
-      sizeX = 600; 
-      sizeY = 600;
-      size(sizeX, sizeY, P3D);    
-    }
-  
 <br/>
 
 #### Función *setup()*
 
-En esta función se han inicializado las distintas variables existentes, como el número de puntos actuales, la variable que indica que la ayuda está activada, las variables que determinan el máximo o mínimo de *scroll* disponible o los objetos empleados.
+En esta función se han inicializado las distintas variables existentes, la imagen de fondo, los valores de los planetas del Sistema solar, las variables de control, entre otros. Además, se ha forzado la pantalla completa con *fullScreen(P3D)* para una mejor visualización.
 
-    void setup () { 
-      //--------Variables de la figura------//
-      pos = 0;
-      sizePoint = 2;
-      nSep = 20; 
+    void setup() {
+      fullScreen(P3D); // Obliga a usar pantalla completa
 
-      //-------Variables de estado-----//
-      printed = false;
-      btnHelp = true;
+      //------Carga de fondo y dimensiones de la imagen-----//
+      backG = loadImage("media/space.jpg");  
+      sizeX = backG.width;
+      sizeY = backG.height;
 
-      //-------Variables relacionadas a la rueda del ratón-----//
-      maxScroll = 5; 
-      minScroll = -5; 
-      scrollMouse = 0;
+      initPlanets(); // Se inicializan los valores el Sistema solar
 
-      //-------Objetos necesarios-------//
-      help = new Help();  
-      points = new Points();  
+      rotateX = 0; //Rotación vertical
+
+      //------Radio de los planetas en modo creación------//
+      radius = 30;
+      minRadius = 20;
+      maxRadius = 200;
+
+      //------Zoom aplicado a ambas vistas--------//
+      minScroll = -5;
+      maxScroll = 10;
+      zoom = 1;
+      countZoom = 0;
+
+      //------Número de planetas de ambas vistas-------//
+      pos = 1; // Vista de creación
+      posIni = radiusP.length; // Vista de visualización
+
+      //-----Variables de estado-----//
+      btnHelp = true; // Ayuda activada
+      newDraw = false; // Modo creación o visualización
+
+      //-------Se crean los planetas del Sistema solar------//
+      solar = new Points();
+      sats = new Points();
+      loadSolar();  
+
+      //------Se crea la estrella central del modo creación-----//
+      points = new Points();
+      center = new Planet(50, 0, 0); //Radio, distancia al centro, ángulo de inicio
+      points.appendItem(center);
+
+      help = new Help(); // Objeto de ayuda
     }
 
 <br/>
 
+#### Función de inicialización *initPlanets()*
+
+En esta función se inicializan los tres vectores que almacenan los datos de cada planeta del Sistema solar, tanto el radio de cada uno, su distancia al Sol y la textura elegida.
+
+        void initPlanets() {
+          radiusP = new float[]{80, 8, 12, 12, 18, 35, 30, 23, 22, 5};
+          distP = new float[]{0, 100, 140, 170, 250, 325, 425, 500, 575, 625};
+          paths = new String[]{"media/sol.png", "media/mercurio.png", 
+                               "media/venus.png", "media/tierra.jpg", 
+                               "media/marte.jpg", "media/jupiter.jpg",
+                               "media/saturno.jpg", "media/urano.jpg",
+                               "media/urano.jpg", "media/pluton_casi_planeta.jpg"}; 
+        }
+
+
 #### Función de dibujado general *draw()*
 
-Esta función es la que se ocupa de mantener el tablero actualizado, y está constituida en tres secciones: la primera se encarga de comprobar si se ha activado el mensaje de ayuda; la segunda se encarga de dibujar el tablero de juego, el botón de ayuda y los dos textos que aparecen en pantalla (Número de vértices y espaciados de triángulos); y la tercera sección comprueba si hay una figura dibujada en pantalla o no.
+Esta función es la que se ocupa de mantener el tablero actualizado, y está constituida en tres secciones: la primera se encarga de comprobar si se ha activado el mensaje de ayuda; la segunda se encarga de comrpobar el tamaño actual de la pantalla para saber si la imagen de fondo debe o no ser redimensionada y, de este modo, evitar una excepción; la tercera parte se encagra de comprobar el modo en el que está la aplicación y, según ello, dibujar el Sistema solar o los planetas creados por el usuario.
 
-    void draw () {
-      //-------Se comprueba si la ayuda está activada-------/
+    void draw() {
+      //-------Se comprueba si la ayuda está activada-------//
       if (btnHelp){  
         help.drawTextHelp();
+        help.drawSquareHelp();
+        help.drawStartButton();
         return;
       }
 
-      //---------Dibujado del tablero, textos y botón-------//
-      drawBoard();  
-      help.drawSquareHelp();
-      help.drawSpaces();
-
-     //--------Se comprueba si se dibuja el sólido o las líneas-------//
-      if (printed){  
-        translate(mouseX, mouseY - (points.getYs()[0] - ((points.getYs()[0] - points.getYs()[1])/2)));
-        shape(group);   
-        moveShape();
-      }else{
-        drawPoints(0, 1);
+      //------Comprobación del tamaño de pantalla y dibujado--------//
+      if (width != sizeX || height != sizeY) {
+        backG.resize(width, height);      
       }
+
+      background(backG);   
+      help.drawSquareHelp();
+      help.drawNewPlanets();
+
+      //------Modo creación o modo visualización-------//    
+      if (newDraw){    
+        help.drawInfo();
+        drawPlanets(false);    
+      }else{
+        help.drawSystem();
+        drawPlanets(true);
+        if (!newDraw) drawSats();
+      }
+      moveShape();
     }
     
 <br/>
