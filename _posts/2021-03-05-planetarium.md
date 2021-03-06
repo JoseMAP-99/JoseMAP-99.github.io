@@ -30,11 +30,11 @@ El diseño elegido para este proyecto está constituido por un espacio de dibujo
 
 La primera vista a explicar es la del Sistema solar (vista de visualización), en la que cada planeta gira en sus respectivas órbitas, además de estar presente la Luna, los anillos de Saturno, y el querido Plutón. Cada uno de estos planetas posee una textura única semejante al presente en su superficie, señalando con circunferencias blancas las órbitas que describe cada uno (figura 2). En esta vista, el usuario podrá aplicar un *zoom* a todo el Sistema o, bien, rotarlo verticalmente, también dispondrá de 2 botones situados en la parte superior, el primero, *CHANGE*, tiene la funcionalidad de cambiar del modo visualización al modo de creación, o viseceversa; el segundo botón es el de ayuda, *HELP*, que abre una vista en la que el usuario podrá leer el manual de uso así como los controles disponibles.
 
-La segunda vista se corresponde con la del modo creación, en la que se presenta una estrella central por defecto. En esta vista el usuario podrá añadir los planetas que desee simplemente pulsando *click* izquierdo en la posición requerida, además que podrá limpiar todos los planetas creados o, simplemente, el último, y, también, podrá aumentar o reducir el radio del planeta a crear (figura 3). En esta vista se presentan los mismo botones que en la vista de visualización, con las mismas funcionalidades, además de un contador de planetas y el valor del radio actual.
-
 | Vista de visualización |
 | - |
 | ![](/images/planetarium/vVisualizacion.PNG "Fig. 2: Vista del Sistema solar") |
+
+La segunda vista se corresponde con la del modo creación, en la que se presenta una estrella central por defecto. En esta vista el usuario podrá añadir los planetas que desee simplemente pulsando *click* izquierdo en la posición requerida, además que podrá limpiar todos los planetas creados o, simplemente, el último, y, también, podrá aumentar o reducir el radio del planeta a crear (figura 3). En esta vista se presentan los mismo botones que en la vista de visualización, con las mismas funcionalidades, además de un contador de planetas y el valor del radio actual.
 
 | Vista de creación |
 | - |
