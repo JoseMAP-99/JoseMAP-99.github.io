@@ -298,92 +298,73 @@ Esta función se encarga de dibujar el satélite natural de la Tierra, la Luna, 
 
 #### Función de dibujado de los planetas *drawPlanets()*
 
-Esta función se encarga de dibujar los puntos que el usuario introduce en tiempo real, además de trazar una línea de unión entre los puntos introducidos. Además, también comprueba que la línea de trazado no sobrepasa el lado izquierdo del tablero para evitar confusiones al usuario.
+Esta función se encarga de dibujar cada planeta, ya sea del Sistema solar o los creados por el usuario, además de ibujar las órbitas que describe cada uno de ellos, empleando la función *ellipse()*. Cada planeta tiene su función *.run()*, la cual se encarga de aplicar un *shape()* de la figura. Al igual que los satélites, los planetas se crean del mismo modo, con la diferencia que se utiliza como punto central la posición del Sol.
 
-    void drawPoints(int xs, int mult) {
-      PVector aux;
-      PVector last;
-      for(int i = 0; i < pos; i++) {
-        aux = points.getItem(i);    
+    void drawPlanets(boolean isSolar) {
+      //-----Se comprueba el modo en el que se encuentra-----//
+      int aux = isSolar ? posIni : pos;
+      for (int i = 0; i < aux; i++){
 
-        if (i == pos - 1){
-          if (mouseX >= sizeX/2){
-            line(xs + mult*aux.x, aux.y, mouseX, mouseY);
-          }
-        }else{
-          last = points.getItem(i+1);  
-          line(xs + mult*last.x, last.y, xs + mult*aux.x, aux.y);
-        }    
-        circle(xs + mult*aux.x, aux.y, sizePoint);
+        //----Según el modo, se obtiene un planeta de las colecciones-----//
+        Planet planet = isSolar ? solar.getItem(i) : points.getItem(i);
+
+        //------Trazado de la óribta--------//
+        pushMatrix();
+        translate(width/2, height/2, -150);
+        rotateX((PI/2.66)+rotateX);
+        scale(zoom);
+        ellipse(0, 0, 2*planet.dist, (2*planet.dist));
+        popMatrix();
+
+        //--------Dibujado del planeta actual--------//
+        pushMatrix();   
+        translate(width/2, height/2, -150);
+        noFill(); 
+        rotateX((-PI/8)+rotateX);
+        scale(zoom);
+        translate(planet.x, planet.y, planet.z);    
+        planet.runPlanet();    
+        popMatrix();
+
+        //--------Actualización de ángulos y coordenadas----------//
+        planet.updateAngle();
+        planet.updateCoords();     
       }
     }
     
 <br/>
 
-#### Función de dibujado *drawSolid()*
+#### Función que comprueba algunas colisiones *checkNewPlanet()*
 
-Esta función se encarga de dibujar el sólido de revolución final, realizando las respectivas transformaciones de coordenadas, empleando la función *multVect()*. También se encarga de rellenar la figura con triángulos, para conseguir esto, se genera un *PShape* para cada triángulo generado. Finalmente, para componer estas figuras, se utiliza un *PShape* general determinado como *GROUP*, cuya finalidad es reunir todas las figuras generadas y mostrarlas como una misma. Así pues, para adjuntar una figura en el sólido general, se empleada la función *PShape.addChild()*, tal como se puede apreciar en el fragmento de código siguiente.
+Esta función se encarga de comprobar si el planeta que se creará colisionará o no con algunos planetas, para este cometido se comprueba el extremo derecho e izquierdo del planeta, comparando si existe algún planeta que ocupe estas posiciones.
 
-    void drawSolid() {
-      PVector pt;
+    boolean checkNewPlanet(float mouseXPos) {
+       float leftPos = 0;
+       float rightPos = 0;
 
-      group = createShape(GROUP); // Grupo de PShape general
+       if (mouseXPos > width/2) {
+          leftPos = mouseXPos - width/2 - radius;
+          rightPos = mouseXPos - width/2 + radius;
+       }else{
+          leftPos = width/2 - mouseXPos - radius;
+          rightPos = width/2 - mouseXPos + radius;
+       }
 
-      solidoForm = createShape(); // Sólido sin relleno
-      solidoForm.beginShape(LINES);
-      stroke(255);
-      solidoForm.strokeWeight(2);
+       print("pos " + leftPos + " " + rightPos + "\n");
 
-      //-------Generación de las nuevas coordenadas-----------// 
-      for (int i = 0; i < pos; i++) {
-        for (int rad = 0; rad <= 360; rad+=nSep){
-          pt = multVect(points.getItem(i), radians(rad));
-          solidoForm.vertex(pt.x, pt.y, pt.z); 
-        }    
-      } 
-      solidoForm.endShape(CLOSE); 
-
-      //-------Variables locales para el cálculo del relleno------//
-      PVector actual, actual1, last, last1;
-      int nVerRad = 360/nSep;
-
-      PShape triangle;
-
-      //-------Creación de triángulos para el relleno-------//
-      for (int i = nVerRad + 1; i < solidoForm.getVertexCount(); i++){
-        actual = solidoForm.getVertex(i - 1);
-        actual1 = solidoForm.getVertex(i);
-        last = solidoForm.getVertex(i - nVerRad - 1);    
-        last1 = solidoForm.getVertex(i - nVerRad); 
-
-        triangle = createShape();
-        triangle.beginShape(TRIANGLES);    
-        triangle.vertex(actual.x, actual.y, actual.z);
-        triangle.vertex(actual1.x, actual1.y, actual1.z);
-        triangle.vertex(last.x, last.y, last.z);
-        triangle.vertex(last1.x, last1.y, last1.z);
-        triangle.endShape(CLOSE);  
-
-        group.addChild(triangle); // Se adjunta cada triángulo en la figura final                              
-      }
-      group.addChild(solidoForm); // Se adjunta la figura sin relleno en la figura final
+       for(int i = 0; i < pos; i++) {
+         Planet pt = points.getItem(i);
+         print((pt.x - pt.radius) + " " + (pt.x + pt.radius) + "\n");
+         if (rightPos <= pt.x + pt.radius && rightPos >= pt.x - pt.radius || 
+             leftPos >= pt.x - pt.radius && leftPos <= pt.x + pt.radius || 
+             rightPos <= -(pt.x + pt.radius) && rightPos >= -(pt.x - pt.radius) ||
+             leftPos >= - (pt.x - pt.radius) && leftPos <= -(pt.x + pt.radius)) return false;
+       }
+       print("------------\n");
+       return true;
     }
     
-<br/>
-
-#### Función de cambio de coordenadas *multVect()*
-
-Esta función se encarga de generar, a partir de un punto y un determinado grado, obtener unas nuevas coordenadas en tres dimensiones que se añadirán al sólido de revolución.
-
-    public PVector multVect(PVector pt, float theta) {
-        PVector res = new PVector();
-        res.x = (pt.x - sizeX/2) * cos(theta) - pt.z * sin(theta);
-        res.y = pt.y;
-        res.z = (pt.x - sizeX/2) * sin(theta) + pt.z * cos(theta);
-        return res;
-    }
-    
-<br/>
+</br>
 
 #### Funciones restantes
 
@@ -399,62 +380,73 @@ Esta clase es la encargada de mostrar y generar todos los textos de la aplicaci�
     void drawSquareHelp() {
         fill(0);
         stroke(255);
-        rect(btnXH, btnYH, btnWH, btnH);   
+        rect((width - 50), btnYH, btnWH, btnH);   
         fill(255);
-        text("HELP", btnXH+5, btnYH+15);
+        textSize(14);
+        text("HELP", (width - 50)+5, btnYH+15);
         fill(0);
-    }
+      }
 
     //-----Función que dibuja los textos en tiempo real en la pantalla de dibujado------//
-    void drawSpaces() {
+    void drawInfo() {
         fill(255);
-        text("Spaces: " + nSep, 10, 20); 
-        text("Points: " + pos, 10, 40);
+        textSize(18);
+        text("Radius: " + radius, 10, 20); 
+        text("Planets: " + pos, 10, 40);
         fill(0);
-    }
+      }
 
     //------Función que dibuja el botón de inicio-----//
     void drawStartButton() {
         fill(0);
         stroke(255);
-        rect(btnXS, btnYS, btnWS, btnH);   
+        rect(((width/2) - 25), (height/5 + 640), btnWS, btnH);   
         fill(255);
-        text("CONTINUE", btnXS+14, btnYS+15);
+        textSize(14);
+        text("CONTINUE", ((width/2) - 25) + 14, (height/5 + 640) + 15);
         fill(0);
-    }
+      }
       
 <br/>
 
 #### Clase *Points*
 
-Esta clase se encarga de almacenar los puntos introducidos (*PVector*) a través de una colección del tipo *ArrayList*. Por tanto, esta clase redefine los métodos de dicha colección, además de proporcionar una función que devuelve aquellos dos puntos cuyo valor Y sea el mayor y el menor de todos, lo cual resulta útil para seleccionar una adecuada función *translate()*.
+Esta clase se encarga de almacenar todos los planetas existentes, empleando para ello una colección del tipo *ArrayList()*. Esta clase tiene sus funciones delegadas para obtener un planeta, añadir uno nuevo, eliminar el último o limpiar toda la lista.
 
     //-------Función que limpia la lista----------//
     public void clearList(){
       this.points.clear(); 
     }  
     
-    //-------Función que obtiene los puntos con máximo y mínimo 'Y'---------//
-    public float[] getYs() {
-      float infY = 0;
-      float supY = height;
-      for(PVector pt : this.points) {
-        if (pt.y > infY) {
-          infY = pt.y;  
-        }
-
-        if (pt.y < supY) {
-          supY = pt.y;  
-        }
+    //-------Función que elimina el último elemento de la lista---------//
+    public void removeLast() {
+        this.points.remove(pos - 1);
       }
-      return new float[] {supY, infY};
-    }
       
 <br/>
 
+#### Clase *Planet*
+
+Esta clase se encarga de generar un objeto Planet, con características como su radios, distancia al centro de rotación, rapidez de movimiento, orientación, así como sus tres componentes X, Y, Z. Esta clase emplea un tipo *PShape* para generar la esfera con todos sus atributos. Este objeto acepta modificaciones a sus atributos, además de aceptar una textura que lo recubra, y otro métodos como *runPlanet()* que muestras la figura por pantalla aplicándole un iluminado con *lights()*. 
+
+Además, existen dos métodos que se encargan de actualizar el estado de la figura actual, ya sea mediante el ángulo de rotación, o las coordenadas X, Z, de la figura. La coordenada Y no se actualiza dado que no sufren cambios en este eje.
+
+    public void runPlanet() {
+        rotateY(radians(angle)); 
+        lights();
+        shape(sphere);
+    } 
+
+    public void updateAngle() {
+        this.angle += this.orientation * this.fast;
+        if (abs(angle) > 360) this.angle = 0;
+    }
+
+</br>
+
 Para consultar el código fuente de la aplicación, puede dirigirse al siguiente enlace:
 
-[Consultar código fuente](https://github.com/JoseMAP-99/JoseMAP-99.github.io/tree/master/codes/SOLID)
+[Consultar código fuente](https://github.com/JoseMAP-99/JoseMAP-99.github.io/tree/master/codes/PLANETARIUM)
 
 <br/>
 <br/>
