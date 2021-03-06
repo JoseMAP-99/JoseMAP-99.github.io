@@ -364,7 +364,7 @@ Esta función se encarga de comprobar si el planeta que se creará colisionará 
        return true;
     }
     
-</br>
+<br/>
 
 #### Funciones restantes
 
@@ -442,7 +442,7 @@ Además, existen dos métodos que se encargan de actualizar el estado de la figu
         if (abs(angle) > 360) this.angle = 0;
     }
 
-</br>
+<br/>
 
 Para consultar el código fuente de la aplicación, puede dirigirse al siguiente enlace:
 
