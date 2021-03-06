@@ -187,7 +187,32 @@ En esta función se inicializan los tres vectores que almacenan los datos de cad
                                "media/saturno.jpg", "media/urano.jpg",
                                "media/urano.jpg", "media/pluton_casi_planeta.jpg"}; 
         }
+        
+<br/>
 
+#### Función de creación *loadSolar()*
+
+En esta función se genera un objeto Planeta para cada uno de los planetas y satélites deseados en el Sistema solar. Para cada planeta se emplean sus respectivos valores de los tres vectores inicializados anteriormente, mientras que para cada satélite se aplica un *translate()* a la posición central del planeta actual y se genera un nuevo objeto Planeta que orbitará a su alrededor.
+
+    void loadSolar() {
+      Planet pt; 
+      Planet sat; 
+      for (int i = 0; i < posIni; i++) {
+        //----Se crea cada planeta y se asigna su textura----//
+        pt = new Planet(radiusP[i], distP[i], random(0, 360));
+        solar.appendItem(pt);
+        pt.setTexture(loadImage(paths[i]));
+
+        //-----Se crea un satélite para cada planeta-----//
+        pushMatrix();
+        translate(pt.x, pt.y, pt.z);
+        sat = new Planet(5, pt.radius + 5, random(0, 360));    
+        sats.appendItem(sat);  
+        popMatrix();
+      }
+    }
+    
+<br/>
 
 #### Función de dibujado general *draw()*
 
@@ -225,20 +250,53 @@ Esta función es la que se ocupa de mantener el tablero actualizado, y está con
     
 <br/>
 
-#### Función de dibujado del tablero *drawBoard()*
+#### Función de dibujado de los satélites *drawSats()*
 
-Esta función únicamente se encarga de pintar el tablero de la aplicación y dibujar la línea vertical divisoria.
+Esta función se encarga de dibujar el satélite natural de la Tierra, la Luna, y los anillos de Saturno. Para conseguir esto, se aplica una serie de funciones *translate()* para mover el eje de coordenadas al punto deseado, empleando todo esto dentro de las funciones *pushMatrix()* y *popMatrix()*.
 
-    void drawBoard() {
-      //------Se pinta el tablero y se dibuja la línea divisoria------//
-      background(0);
-      stroke(114, 116, 116);
-      line(sizeX/2, 0, sizeX/2, sizeY);
+    void drawSats() {
+      //-----Se dibuja la Luna-----//  
+      Planet planet = sats.getItem(3);        
+      pushMatrix();   
+      translate(width/2, height/2, -150);
+      noFill(); 
+      rotateX((-PI/8)+rotateX);
+      scale(zoom);
+      translate(solar.getItem(3).x, solar.getItem(3).y, solar.getItem(3).z);   
+      translate(planet.x, planet.y, planet.z);        
+      planet.runPlanet();    
+      popMatrix();
+      
+      //-----Actualización de ángulos y coordenadas------//
+      planet.updateAngle();
+      planet.updateCoords(); 
+
+      //------Se dibujan los anillos de Saturno-----//
+      planet = sats.getItem(6);   
+      pushMatrix();   
+      translate(width/2, height/2, -150);
+      rotateX((-PI/8)+rotateX);      
+      scale(zoom);
+      translate(solar.getItem(6).x, solar.getItem(6).y, solar.getItem(6).z);        
+      rotateX((PI/2.66)+rotateX);
+
+      //----Los anillos están compuestos por varias figuras 'ellipse()'
+      stroke(195, 150, 74);
+      for (int j = 0; j <= 24; j+=2){        
+        ellipse(0, 0, 2*planet.dist+j, (2*planet.dist)+j);
+      }
+
+      noStroke();
+      popMatrix();  
+      
+      //-----Actualización de ángulos y coordenadas------//
+      planet.updateAngle();
+      planet.updateCoords(); 
     }
     
 <br/>
 
-#### Función de dibujado de puntos *drawPoints()*
+#### Función de dibujado de los planetas *drawPlanets()*
 
 Esta función se encarga de dibujar los puntos que el usuario introduce en tiempo real, además de trazar una línea de unión entre los puntos introducidos. Además, también comprueba que la línea de trazado no sobrepasa el lado izquierdo del tablero para evitar confusiones al usuario.
 
