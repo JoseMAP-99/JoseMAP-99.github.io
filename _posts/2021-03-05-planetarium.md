@@ -69,11 +69,9 @@ Para la realización de esta práctica se ha empleado *Processing*[^1], que se d
 
 Por tanto, el proyecto ha sido desarrollado totalmente en *Processing* y, dado que *p5.js* tiene su base en el primero, su respectiva conversión es simple. Para realizar esta conversión se he utilizado la herramienta online *HerokuApp*[^3].
 
-------------REVISAR con p5.js-------------
-El código del proyecto ha sido alterado en su versión en *p5.js*, debido a que esta librería no posee herramientas idénticas a las de *Processing*, pero sí equivalentes, tal es el caso de *PVector* que su equivalente en *p5.js* es la función *createVector()*, o la colección *ArrayList* que en *p5.js* puede ser reemplazada sencillamente con un array []. Sin embargo, ha habido cambios más drásticos como es el caso de la librería *Pshape* y sus transformaciones, pues en *p5.js* estas transformaciones deben ser asignadas mediante una variable y se posibilita el uso de las funciones *push()* y *pop()*.
+El código del proyecto ha sido alterado en su versión en *p5.js*, debido a que esta librería no posee herramientas idénticas a las de *Processing*, pero sí equivalentes, tal es el caso de la colección *ArrayList* que en *p5.js* puede ser reemplazada sencillamente con un array []. Sin embargo, ha habido cambios más drásticos como es el caso de la librería *Pshape* y sus transformaciones, pues en *p5.js* estas transformaciones no pueden ser asignadas a una variable, y se posibilita el uso de las funciones *push()* y *pop()*.
 
 Entre los cambios realizados de más importancia se encuentra el hecho que, a diferencia de *Processing*, para usar gráficos de esta estilo en *p5.js* es requerido trabajar con *WEBGL*, lo que ocasiona cambios respecto a la orientación de los ejes de coordenadas. Para solventar esto, se empleó un *translate()* para mover el eje de coordenadas a la esquina superior izquierda, tal y como ocurre en *Processing*.
-----------REVISAR con p5.js----------------
 
 Para obtener el GIF del videojuego se optó por la librería *gifAnimation*, sin embargo, debido a problemas de lentitud en la captura de *frames*, se optó por obtener el GIF grabando la pantalla y pasándolo a dicho formato final.
 
