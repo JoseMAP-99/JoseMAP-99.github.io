@@ -464,11 +464,12 @@ A continuación se muestra la ejecución de la aplicación en *Processing* en fo
 
 Debido a que *p5.js* no posee las mismas herramientas que *Processing*, se ha tenido que alterar la aplicación, con el fin de adaptarlo adecuadamente a esta librería. Los controles modificados se listan a continuación.
 
+{% include info.html text="Las teclas 'M' y 'L' controlan el radio (Modo creación)"%}
 {% include info.html text="Las teclas '+' y '-' controlan el zoom"%}
 {% include info.html text="Click derecho o 'ENTER' para reiniciar"%}
 
 <div style="display: flex; justify-content: center">
-  <iframe width="605" height="605" src="https://editor.p5js.org/JoseMAP-99/embed/1aYzzBgZt"></iframe>
+  <iframe width="1005" height="1005" src="https://editor.p5js.org/JoseMAP-99/embed/7vL2bL4ux"></iframe>
 </div>
 
 <br/>
