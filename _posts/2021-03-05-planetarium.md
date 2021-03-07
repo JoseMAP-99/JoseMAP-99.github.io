@@ -470,6 +470,10 @@ Debido a que *p5.js* no posee las mismas herramientas que *Processing*, se ha te
   <iframe width="1005" height="1005" src="https://editor.p5js.org/JoseMAP-99/embed/7vL2bL4ux"></iframe>
 </div>
 
+Sin embargo, debido a sus dimensiones, es mejor ejecutarlo en pantalla completa, usando el siguiente enlace:
+
+[Ejecución en pantalla completa](https://editor.p5js.org/JoseMAP-99/full/7vL2bL4ux)
+
 <br/>
 <br/>
 
