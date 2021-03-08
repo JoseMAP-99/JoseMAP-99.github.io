@@ -467,7 +467,7 @@ Debido a que *p5.js* no posee las mismas herramientas que *Processing*, se ha te
 {% include info.html text="Click derecho o 'ENTER' para reiniciar"%}
 
 <div style="display: flex; justify-content: center">
-  <iframe style="width:500px; height:500px;" src="https://editor.p5js.org/JoseMAP-99/embed/7vL2bL4ux"></iframe>
+  <iframe width="1000" height="1000" src="https://editor.p5js.org/JoseMAP-99/embed/7vL2bL4ux"></iframe>
 </div>
 
 <br/>
