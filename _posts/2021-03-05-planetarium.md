@@ -466,13 +466,7 @@ Debido a que *p5.js* no posee las mismas herramientas que *Processing*, se ha te
 {% include info.html text="Las teclas '+' y '-' controlan el zoom"%}
 {% include info.html text="Click derecho o 'ENTER' para reiniciar"%}
 
-<div style="display: flex; justify-content: center">
-  <iframe width="1000" height="1000" src="https://editor.p5js.org/JoseMAP-99/embed/7vL2bL4ux"></iframe>
-</div>
-
-<br/>
-
-Sin embargo, debido a sus dimensiones, es mejor ejecutarlo en pantalla completa, usando el siguiente enlace:
+Debido a sus dimensiones es mejor ejecutarlo en pantalla completa, usando el siguiente enlace:
 
 [Ejecución en pantalla completa](https://editor.p5js.org/JoseMAP-99/full/7vL2bL4ux)
 
