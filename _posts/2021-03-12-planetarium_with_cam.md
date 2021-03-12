@@ -2,11 +2,11 @@
 
 `Autor: José María Amusquívar Poppe`
 
-Para el desarrollo de esta práctica se ha solicitado la realización de una mejora para el proyecto *Planetario*, realizado en una publicación anterior. Este proyecto consiste en un sistema de planetas, los cuales orbitan al rededor de una estrella central. La mejora realizada sobre este proyecto es la adición de una nave espacial controlable por el usuario a través del sistema planetario, además, se permite cambiar el punto de vista de la cámara, situándolo en la nave espacial (Figura 2) o en una vista general del sistema Solar (Figura 1).
+Para el desarrollo de esta práctica se ha solicitado la realización de una mejora para el proyecto *Planetario*[^1], realizado en una publicación anterior. Este proyecto consiste en un sistema de planetas, los cuales orbitan al rededor de una estrella central. La mejora realizada sobre este proyecto es la adición de una nave espacial controlable por el usuario a través del sistema planetario, además, se permite cambiar el punto de vista de la cámara, situándolo en la nave espacial (Figura 2) o en una vista general del sistema Solar (Figura 1).
 
-![](/images/planetarium_with_cam/gPrincipal.PNG "Fig. 1: Interfaz de usuario de la aplicación (General View)")
+![](/images/planetarium_with_cam/gPrincipal.PNG "Fig. 1: Interfaz de usuario de la aplicación (Vista General)")
 
-![](/images/planetarium_with_cam/vPrincipal.PNG "Fig. 2: Interfaz de usuario de la aplicación (First Person View)")
+![](/images/planetarium_with_cam/vPrincipal.PNG "Fig. 2: Interfaz de usuario de la aplicación (Vista en Primera Persona)")
 
 <br/>
 
@@ -17,11 +17,11 @@ Para el desarrollo de esta práctica se ha solicitado la realización de una mej
 
 ## Introducción
 
-El Sistema solar está compuesto por una estrella central, el Sol, que acapará más de 99% de la masa total del sistema, seguido de 8 planetas que ocupan la mayor parte de la masa restante. Estos planetas, ordenados según cercanía al Sol, son: Mercurio, Venus, Tierra, Marte, Júpiter, Saturno, Urano y Neptuno. 
+El Sistema solar está compuesto por una estrella central, el Sol, que acapara más del 99% de la masa total del sistema, seguido de 8 planetas que ocupan la mayor parte de la masa restante. Estos planetas, ordenados según cercanía al Sol, son: Mercurio, Venus, Tierra, Marte, Júpiter, Saturno, Urano y Neptuno. 
 
-Para poder dibujar estos planetas se puede hacer uso de la primitiva 3D *sphere()* o *createShape(SPHERE)*, señanalando en ambos casos es radio deseado de la esfera, habiendo aplicado una función *translate()* previamente para situar el centro del planeta en el punto deseado.
+Para poder dibujar estos planetas se puede hacer uso de la primitiva 3D *sphere()* o *createShape(SPHERE)*, señanalando en ambos casos el radio deseado de la esfera, habiendo aplicado una función *translate()* previamente para situar el centro del planeta en el punto requerido.
 
-Finalmente, se ha incorporado tres vistas, en la primera el usuario visualiza el Sistema solar e interactúa con él, en la segunda vista el usuario tiene la posibilidad de crear su propio sistema, alterando para ello el radio de cada planeta y su disposición, y la última vista es, simplemente, un menú de ayuda o manual de uso.
+Finalmente, se ha incorporado tres vistas, en la primera el usuario visualiza el Sistema solar e interactúa con él, en la segunda vista el usuario tiene la posibilidad de crear su propio sistema, alterando para ello el radio de cada planeta y su disposición, y la última vista es, simplemente, un menú de ayuda o manual de uso. En las dos primeras vistas, el usuario puede controlar una nave espacial a través del sistema Solar, pudiendo cambiar la vista general de la cámara a primera persona situado en la nave espacial.
 
 <br/>
 <br/>
@@ -30,23 +30,27 @@ Finalmente, se ha incorporado tres vistas, en la primera el usuario visualiza el
 
 El diseño elegido para este proyecto está constituido por un espacio de dibujo y visualización cuyo fondo se corresponde con el del espacio exterior. 
 
-La primera vista a explicar es la del Sistema solar (vista de visualización), en la que cada planeta gira en sus respectivas órbitas, además de estar presente la Luna, los anillos de Saturno, y el querido Plutón. Cada uno de estos planetas posee una textura única semejante al presente en su superficie, señalando con circunferencias blancas las órbitas que describe cada uno (figura 2). En esta vista, el usuario podrá aplicar un *zoom* a todo el Sistema o, bien, rotarlo verticalmente, también dispondrá de 2 botones situados en la parte superior, el primero, *CHANGE*, tiene la funcionalidad de cambiar del modo visualización al modo de creación, o viseceversa; el segundo botón es el de ayuda, *HELP*, que abre una vista en la que el usuario podrá leer el manual de uso así como los controles disponibles.
+La primera vista a explicar es la del Sistema solar (vista de visualización), en la que cada planeta gira en sus respectivas órbitas, además de estar presente la Luna, los anillos de Saturno, y el querido Plutón. Cada uno de estos planetas posee una textura única semejante al presente en su superficie, señalando con circunferencias blancas las órbitas que describe cada uno (figura 3). En esta vista, el usuario podrá aplicar un *zoom* a todo el Sistema o, bien, rotarlo verticalmente, también dispondrá de 2 botones situados en la parte superior, el primero, *CHANGE*, tiene la funcionalidad de cambiar del modo visualización al modo de creación, o viseceversa; el segundo botón es el de ayuda, *HELP*, que abre una vista en la que el usuario podrá leer el manual de uso así como los controles disponibles. 
 
 | Vista de visualización |
 | - |
-| ![](/images/planetarium/vVisualizacion.PNG "Fig. 2: Vista del Sistema solar") |
+| ![](/images/planetarium_with_cam/vVisualizacion.PNG "Fig. 3: Vista del Sistema solar (Primera Persona)") |
 
-La segunda vista se corresponde con la del modo creación, en la que se presenta una estrella central por defecto. En esta vista el usuario podrá añadir los planetas que desee simplemente pulsando *click* izquierdo en la posición requerida, además que podrá limpiar todos los planetas creados o, simplemente, el último, y, también, podrá aumentar o reducir el radio del planeta a crear (figura 3). En esta vista se presentan los mismo botones que en la vista de visualización, con las mismas funcionalidades, además de un contador de planetas y el valor del radio actual.
+La segunda vista se corresponde con la del modo creación, en la que se presenta una estrella central por defecto. En esta vista el usuario podrá añadir los planetas que desee simplemente pulsando *click* izquierdo en la posición requerida, además que podrá limpiar todos los planetas creados o, simplemente, el último, y, también, podrá aumentar o reducir el radio del planeta a crear (figura 4). En esta vista se presentan los mismo botones que en la vista de visualización, con las mismas funcionalidades, además de un contador de planetas y el valor del radio actual.
 
 | Vista de creación |
 | - |
-| ![](/images/planetarium/vCreacion.PNG "Fig. 3: Vista con planetas personalizados") |
+| ![](/images/planetarium_with_cam/vCreacion.PNG "Fig. 4: Vista con planetas personalizados (Primera Persona)") |
 
-La tercera vista, ya mencionada anteriormente, es la de ayuda, accesible desde el botón *HELP* o pulsando la tecla 'H' cuando se necesite. En esta vista se explica de forma general cómo funciona la aplicación mostrando los controles disponibles (figura 4).
+En las dos vistas mencionadas anteriormente, el usuario puede controlar una nave espacial con el teclado. Entonces, si la vista general de la cámara está activada (figura 1), la nave podrá desplazarse a través del eje *X* e *Y*, en cambio, si la vista en primera persona está activada (figura 2), se añade también el desplazamiento en el eje *Z*, tal como se aprecian en las dos figuras anteriores.
 
-| Vista de ayuda |
-| - |
-| ![](/images/planetarium/vAyuda.PNG "Fig. 4: Manual de uso y ayuda de la aplicación") |
+La tercera vista, ya mencionada anteriormente, es la de ayuda, accesible desde el botón *HELP* o pulsando la tecla 'H' cuando se necesite. En esta vista se explica de forma general cómo funciona la aplicación mostrando los controles disponibles, tanto para el manejo general (figura 5), como para el manejo de la nave (figura 6), el cambio entre estas dos ayudas se realiza pulsando sobre el botón *GENERAL* o *AIRCRAFT*.
+
+![](/images/planetarium_with_cam/vAyuda1.PNG "Fig. 5: Manual de uso y ayuda de la aplicación (GENERAL)")
+
+<br/>
+
+![](/images/planetarium_with_cam/vAyuda2.PNG "Fig. 5: Manual de uso y ayuda de la aplicación (NAVE ESPACIAL)")
 
 #### Controles
 
@@ -67,9 +71,9 @@ Tal como se ha mencionado anteriormente, los controles están disponibles desde 
 
 ## Recursos empleados
 
-Para la realización de esta práctica se ha empleado *Processing*[^1], que se define como un lenguaje de programación y entorno de desarrollo integrado de código abierto basado en Java. Este lenguaje se ha utilizado para el desarollo de forma local, sin embargo, para poder publicar el proyecto a través de internet es necesario emplear *p5.js*[^2], que se define como una librería *JavaScript* perteneciente al lado del cliente que posibilita la creación de experiencias interactivas y gráficas, basado en el núcleo de *Processing*.
+Para la realización de esta práctica se ha empleado *Processing*[^2], que se define como un lenguaje de programación y entorno de desarrollo integrado de código abierto basado en Java. Este lenguaje se ha utilizado para el desarollo de forma local, sin embargo, para poder publicar el proyecto a través de internet es necesario emplear *p5.js*[^3], que se define como una librería *JavaScript* perteneciente al lado del cliente que posibilita la creación de experiencias interactivas y gráficas, basado en el núcleo de *Processing*.
 
-Por tanto, el proyecto ha sido desarrollado totalmente en *Processing* y, dado que *p5.js* tiene su base en el primero, su respectiva conversión es simple. Para realizar esta conversión se he utilizado la herramienta online *HerokuApp*[^3].
+Por tanto, el proyecto ha sido desarrollado totalmente en *Processing* y, dado que *p5.js* tiene su base en el primero, su respectiva conversión es simple. Para realizar esta conversión se he utilizado la herramienta online *HerokuApp*[^4].
 
 El código del proyecto ha sido alterado en su versión en *p5.js*, debido a que esta librería no posee herramientas idénticas a las de *Processing*, pero sí equivalentes, tal es el caso de la colección *ArrayList* que en *p5.js* puede ser reemplazada sencillamente con un array []. Sin embargo, ha habido cambios más drásticos como es el caso de la librería *Pshape* y sus transformaciones, pues en *p5.js* estas transformaciones no pueden ser asignadas a una variable, y se posibilita el uso de las funciones *push()* y *pop()*.
 
@@ -486,6 +490,7 @@ Si desea descargar el código fuente, puede hacerlo desde el siguiente enlace:
 
 ## Referencias
 
-[^1]: [Página de consulta sobre *Processing*](https://processing.org/)
-[^2]: [Página de consulta sobre *p5.js*](https://p5js.org/)
-[^3]: [Página de conversión *Processing* a *p5.js*](https://pde2js.herokuapp.com/)
+[^1]: [Práctica anterior realizada](https://josemap-99.github.io/2021/03/05/planetarium.html)
+[^2]: [Página de consulta sobre *Processing*](https://processing.org/)
+[^3]: [Página de consulta sobre *p5.js*](https://p5js.org/)
+[^4]: [Página de conversión *Processing* a *p5.js*](https://pde2js.herokuapp.com/)
