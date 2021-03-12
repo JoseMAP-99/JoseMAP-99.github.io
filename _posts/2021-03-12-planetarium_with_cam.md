@@ -1,10 +1,12 @@
-# Planetario
+# Planetario mejorado
 
 `Autor: José María Amusquívar Poppe`
 
-Para el desarrollo de esta práctica se ha solicitado la realización de un sistema de planetas, los cuales orbitan al rededor de una estrella central. Para mayor simplicidad, se ha cogido de ejemplo el Sistema solar, en el que el planeta central es el Sol. Dado que replicar a escala las medidas exactas resultaría en un sistema complejo de visualizar, se ha optado por alterar las medidas, tanto las distancias al Sol como los radios de cada planeta (figura 1).
+Para el desarrollo de esta práctica se ha solicitado la realización de una mejora para el proyecto *Planetario*, realizado en una publicación anterior. Este proyecto consiste en un sistema de planetas, los cuales orbitan al rededor de una estrella central. La mejora realizada sobre este proyecto es la adición de una nave espacial controlable por el usuario a través del sistema planetario, además, se permite cambiar el punto de vista de la cámara, situándolo en la nave espacial (Figura 2) o en una vista general del sistema Solar (Figura 1).
 
-![](/images/planetarium/principal.PNG "Fig. 1: Interfaz de usuario de la aplicación")
+![](/images/planetarium_with_cam/gPrincipal.PNG "Fig. 1: Interfaz de usuario de la aplicación (General View)")
+
+![](/images/planetarium_with_cam/vPrincipal.PNG "Fig. 2: Interfaz de usuario de la aplicación (First Person View)")
 
 <br/>
 
