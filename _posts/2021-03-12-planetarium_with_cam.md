@@ -46,25 +46,44 @@ En las dos vistas mencionadas anteriormente, el usuario puede controlar una nave
 
 La tercera vista, ya mencionada anteriormente, es la de ayuda, accesible desde el botón *HELP* o pulsando la tecla 'H' cuando se necesite. En esta vista se explica de forma general cómo funciona la aplicación mostrando los controles disponibles, tanto para el manejo general (figura 5), como para el manejo de la nave (figura 6), el cambio entre estas dos ayudas se realiza pulsando sobre el botón *GENERAL* o *AIRCRAFT*.
 
-![](/images/planetarium_with_cam/vAyuda1.PNG "Fig. 5: Manual de uso y ayuda de la aplicación (GENERAL)")
-
-<br/>
-
-![](/images/planetarium_with_cam/vAyuda2.PNG "Fig. 5: Manual de uso y ayuda de la aplicación (NAVE ESPACIAL)")
+| Vista de ayuda |
+| - |
+| ![](/images/planetarium_with_cam/vAyuda1.PNG "Fig. 5: Manual de uso y ayuda de la aplicación (GENERAL)") |
+| - |
+| ![](/images/planetarium_with_cam/vAyuda2.PNG "Fig. 6: Manual de uso y ayuda de la aplicación (NAVE ESPACIAL)") |
 
 #### Controles
 
-Tal como se ha mencionado anteriormente, los controles están disponibles desde la vista de ayuda de la aplicación (figura 4). Los distintos controles disponibles permiten interactuar al usuario con el Sistema solar o su propia creación, entre estas interacciones está presenta la acción de rotar, aplicar un *zoom*, alterar el radio del planeta, limpiar los planetas o sólo el último, entre otros.
+Tal como se ha mencionado anteriormente, los controles están disponibles desde la vista de ayuda de la aplicación (figura 5 y 6). Los distintos controles disponibles permiten interactuar al usuario con el Sistema solar, su propia creación, o con la nave espacial, entre estas interacciones está presenta la acción de rotar, aplicar un *zoom*, alterar el radio del planeta, limpiar los planetas o sólo el último, el desplazamiento de la navea, entre otros.
 
-* **Click izquierdo:** Modo creación. Permite crear un nuevo planeta.
-
-* **Click derecho:** Modo creación. Limpia la pantalla eliminando los planetas creados.
+* **GENERAL**
 
 * **Rueda del ratón:** Realiza un *zoom* sobre la figura, según la dirección de la rueda del ratón.
 
 * **Tecla 'S'-'W' o 'Down'-'Up':** Rota la figura verticalmente.
 
-* **Tecla '+'-'-':** Modo creación. Aumenta o reduce el radio del siguiente planeta.
+* **Tecla 'C':** Cambia el punto de vista de la cámara (GENERAL o NAVE).
+
+* **MODO CREACIÓN**
+
+* **Click izquierdo:** Permite crear un nuevo planeta.
+
+* **Click derecho:** Limpia la pantalla eliminando los planetas creados.
+
+* **Tecla '+'-'-':** Aumenta o reduce el radio del siguiente planeta.
+
+* **Tecla 'X':** Elimina el último planeta creado.
+
+* **NAVE ESPACIAL**
+
+* **Tecla 'R':** Reinicia las coordenadas a las iniciales, al igual que la cámara.
+
+* **Tecla '8' - '2':** Controla el desplazamiento vertical.
+
+* **Tecla '4' - '6':** Controla el desplazamiento horizontal.
+
+* **Tecla 'M' - 'L':** Primera Persona. Controla avance y retroceso de la nave.
+
 
 <br/>
 <br/>
