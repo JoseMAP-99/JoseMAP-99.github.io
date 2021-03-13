@@ -92,13 +92,7 @@ Tal como se ha mencionado anteriormente, los controles están disponibles desde 
 
 ## Recursos empleados
 
-Para la realización de esta práctica se ha empleado *Processing*[^3], que se define como un lenguaje de programación y entorno de desarrollo integrado de código abierto basado en Java. Este lenguaje se ha utilizado para el desarollo de forma local, sin embargo, para poder publicar el proyecto a través de internet es necesario emplear *p5.js*[^4], que se define como una librería *JavaScript* perteneciente al lado del cliente que posibilita la creación de experiencias interactivas y gráficas, basado en el núcleo de *Processing*.
-
-Por tanto, el proyecto ha sido desarrollado totalmente en *Processing* y, dado que *p5.js* tiene su base en el primero, su respectiva conversión es simple. Para realizar esta conversión se he utilizado la herramienta online *HerokuApp*[^5].
-
-El código del proyecto ha sido alterado en su versión en *p5.js*, debido a que esta librería no posee herramientas idénticas a las de *Processing*, pero sí equivalentes, tal es el caso de la colección *ArrayList* que en *p5.js* puede ser reemplazada sencillamente con un array []. Sin embargo, ha habido cambios más drásticos como es el caso de la librería *Pshape* y sus transformaciones, pues en *p5.js* estas transformaciones no pueden ser asignadas a una variable, y se posibilita el uso de las funciones *push()* y *pop()*.
-
-Entre los cambios realizados de más importancia se encuentra el hecho que, a diferencia de *Processing*, para usar gráficos de esta estilo en *p5.js* es requerido trabajar con *WEBGL*, lo que ocasiona cambios respecto a la orientación de los ejes de coordenadas. Para solventar esto, se empleó un *translate()* para mover el eje de coordenadas a la esquina superior izquierda, tal y como ocurre en *Processing*.
+Para la realización de esta práctica se ha empleado *Processing*[^3], que se define como un lenguaje de programación y entorno de desarrollo integrado de código abierto basado en Java. Además, se ha empleado un modelo *.obj* ya definido, encontrado en la página *Clara.io*[^2], desde ahí se puede consultar los detalles de la nave espacial utilizada.
 
 Para obtener el GIF del videojuego se optó por la librería *gifAnimation*, sin embargo, debido a problemas de lentitud en la captura de *frames*, se optó por obtener el GIF grabando la pantalla y pasándolo a dicho formato final.
 
@@ -244,22 +238,7 @@ Para consultar el código fuente de la aplicación, puede dirigirse al siguiente
 
 A continuación se muestra la ejecución de la aplicación en *Processing* en formato de GIF (figura 7).
 
-![](/images/planetarium_with_cam/funcionamiento.gif "Fig. 5: Funcionamiento de la aplicación")
-
-<br/>
-<br/>
-
-## Ejecución en vivo
-
-Debido a que *p5.js* no posee las mismas herramientas que *Processing*, se ha tenido que alterar la aplicación, con el fin de adaptarlo adecuadamente a esta librería. Los controles modificados se listan a continuación.
-
-{% include info.html text="Las teclas 'M' y 'L' controlan el radio (Modo creación)"%}
-{% include info.html text="Las teclas '+' y '-' controlan el zoom"%}
-{% include info.html text="Click derecho o 'ENTER' para reiniciar"%}
-
-Debido a sus dimensiones es mejor ejecutarlo en pantalla completa, usando el siguiente enlace:
-
-[Ejecución en pantalla completa](https://editor.p5js.org/JoseMAP-99/full/7vL2bL4ux)
+![](/images/planetarium_with_cam/funcionamiento.gif "Fig. 7: Funcionamiento de la aplicación")
 
 <br/>
 <br/>
@@ -268,7 +247,7 @@ Debido a sus dimensiones es mejor ejecutarlo en pantalla completa, usando el sig
 
 Si desea descargar el código fuente, puede hacerlo desde el siguiente enlace:
 
-[Descarga del código fuente](https://downgit.github.io/#/home?url=https://github.com/JoseMAP-99/JoseMAP-99.github.io/tree/master/codes/PLANETARIUM)
+[Descarga del código fuente](https://downgit.github.io/#/home?url=https://github.com/JoseMAP-99/JoseMAP-99.github.io/tree/master/codes/PLANETARIUM_WITH_CAM)
 
 <br/>
 <br/>
@@ -278,5 +257,3 @@ Si desea descargar el código fuente, puede hacerlo desde el siguiente enlace:
 [^1]: [Práctica anterior realizada](https://josemap-99.github.io/2021/03/05/planetarium.html)
 [^2]: [Página de descarga del modelo](https://clara.io/view/5e324073-0853-4b44-973c-b47906450768)
 [^3]: [Página de consulta sobre *Processing*](https://processing.org/)
-[^4]: [Página de consulta sobre *p5.js*](https://p5js.org/)
-[^5]: [Página de conversión *Processing* a *p5.js*](https://pde2js.herokuapp.com/)
