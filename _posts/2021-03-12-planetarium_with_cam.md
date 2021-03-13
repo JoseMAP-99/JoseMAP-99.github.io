@@ -56,7 +56,7 @@ La tercera vista, ya mencionada anteriormente, es la de ayuda, accesible desde e
 
 Tal como se ha mencionado anteriormente, los controles están disponibles desde la vista de ayuda de la aplicación (figura 5 y 6). Los distintos controles disponibles permiten interactuar al usuario con el Sistema solar, su propia creación, o con la nave espacial, entre estas interacciones está presenta la acción de rotar, aplicar un *zoom*, alterar el radio del planeta, limpiar los planetas o sólo el último, el desplazamiento de la navea, entre otros.
 
-* **GENERAL**
+**GENERAL**
 
 * **Rueda del ratón:** Realiza un *zoom* sobre la figura, según la dirección de la rueda del ratón.
 
@@ -64,7 +64,7 @@ Tal como se ha mencionado anteriormente, los controles están disponibles desde 
 
 * **Tecla 'C':** Cambia el punto de vista de la cámara (GENERAL o NAVE).
 
-* **MODO CREACIÓN**
+**MODO CREACIÓN**
 
 * **Click izquierdo:** Permite crear un nuevo planeta.
 
@@ -74,7 +74,7 @@ Tal como se ha mencionado anteriormente, los controles están disponibles desde 
 
 * **Tecla 'X':** Elimina el último planeta creado.
 
-* **NAVE ESPACIAL**
+**NAVE ESPACIAL**
 
 * **Tecla 'R':** Reinicia las coordenadas a las iniciales, al igual que la cámara.
 
