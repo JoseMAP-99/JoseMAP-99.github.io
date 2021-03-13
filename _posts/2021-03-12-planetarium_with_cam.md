@@ -21,7 +21,7 @@ El Sistema solar está compuesto por una estrella central, el Sol, que acapara m
 
 Para poder dibujar estos planetas se puede hacer uso de la primitiva 3D *sphere()* o *createShape(SPHERE)*, señanalando en ambos casos el radio deseado de la esfera, habiendo aplicado una función *translate()* previamente para situar el centro del planeta en el punto requerido.
 
-Finalmente, se ha incorporado tres vistas, en la primera el usuario visualiza el Sistema solar e interactúa con él, en la segunda vista el usuario tiene la posibilidad de crear su propio sistema, alterando para ello el radio de cada planeta y su disposición, y la última vista es, simplemente, un menú de ayuda o manual de uso. En las dos primeras vistas, el usuario puede controlar una nave espacial a través del sistema Solar, pudiendo cambiar la vista general de la cámara a primera persona situado en la nave espacial.
+Finalmente, se ha incorporado tres vistas, en la primera el usuario visualiza el Sistema solar e interactúa con él, en la segunda vista el usuario tiene la posibilidad de crear su propio sistema, alterando para ello el radio de cada planeta y su disposición, y la última vista es, simplemente, un menú de ayuda o manual de uso. En las dos primeras vistas, el usuario puede controlar una nave espacial a través del sistema planetario, pudiendo cambiar la vista general de la cámara a primera persona situado en la nave espacial.
 
 <br/>
 <br/>
