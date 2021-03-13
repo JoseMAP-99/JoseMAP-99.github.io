@@ -113,7 +113,6 @@ A continuación se procederá a explicar el código realizado en *Processing*, e
 Para conseguir que la aplicación funcione adecuadamente, se ha empleado una serie de variables con determinadas funciones, tal y como se puede apreciar en el siguiente fragmento de código:
 
     //--------Objetos personalizados----------//
-    ```java
     Points points; // Colección de planetas introducidos por el usuario
     Points sats; // Colección de satélites generados para el Sistema solar
     Points solar; // Colección de planetas correspondiente al Sistema solar
@@ -145,7 +144,6 @@ Para conseguir que la aplicación funcione adecuadamente, se ha empleado una ser
     //-------Listas de valores para el Sistema solar-----------//
     float [] radiusP, distP; // Radios y distancias al Sol
     String [] paths; // Rutas de texturas de cada planeta
-    ```
 
 <br/>
 
