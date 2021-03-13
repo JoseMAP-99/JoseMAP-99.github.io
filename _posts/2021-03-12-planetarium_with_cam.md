@@ -138,7 +138,7 @@ En esta función se han inicializado las distintas variables existentes y creado
 
 Esta función es la que se ocupa de mantener el tablero actualizado, y la que se encarga de cambiar el modo de cámara según la variable *naveCamara*. Lo primero que se realiza es comprobar si la vista de ayuda está activa, si lo está, se cambia el modo de cámara al modo general para evitar que la vista de ayuda se vea desconfigurada. Además, el método *help.drawControls()* se encarga de mostrar los controles generales de la aplicación o los controles de la nave espacial, según si se ha pulsado el botón *GENERAL*. 
 
-Posteriormente se comprueba si la vista en primera persona está activa o no, para que, finalmente, la nave se ejeucte con la función *nave.runAircraft()*.
+Posteriormente se comprueba si la vista en primera persona está activa o no, para que, finalmente, la nave se ejecute con la función *nave.runAircraft()*.
 
     void draw() {
         //-------Se comprueba si la ayuda está activada-------//
