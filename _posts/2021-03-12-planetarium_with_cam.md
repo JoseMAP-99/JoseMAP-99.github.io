@@ -52,6 +52,8 @@ La tercera vista, ya mencionada anteriormente, es la de ayuda, accesible desde e
 | - |
 | ![](/images/planetarium_with_cam/vAyuda2.PNG "Fig. 6: Manual de uso y ayuda de la aplicación (NAVE ESPACIAL)") |
 
+Para el desarrollo de la nave espacial se ha usado un objeto *.obj* ya definido, encontrado en *Clara.io*[^2]. Este modelo fue cargado a *Processing* empleando la función *loadShape()*, y reescalado a las dimensiones correspondientes, tal como se ve en las imágenes de funcionamiento.
+
 #### Controles
 
 Tal como se ha mencionado anteriormente, los controles están disponibles desde la vista de ayuda de la aplicación (figura 5 y 6). Los distintos controles disponibles permiten interactuar al usuario con el Sistema solar, su propia creación, o con la nave espacial, entre estas interacciones está presenta la acción de rotar, aplicar un *zoom*, alterar el radio del planeta, limpiar los planetas o sólo el último, el desplazamiento de la navea, entre otros.
@@ -90,9 +92,9 @@ Tal como se ha mencionado anteriormente, los controles están disponibles desde 
 
 ## Recursos empleados
 
-Para la realización de esta práctica se ha empleado *Processing*[^2], que se define como un lenguaje de programación y entorno de desarrollo integrado de código abierto basado en Java. Este lenguaje se ha utilizado para el desarollo de forma local, sin embargo, para poder publicar el proyecto a través de internet es necesario emplear *p5.js*[^3], que se define como una librería *JavaScript* perteneciente al lado del cliente que posibilita la creación de experiencias interactivas y gráficas, basado en el núcleo de *Processing*.
+Para la realización de esta práctica se ha empleado *Processing*[^3], que se define como un lenguaje de programación y entorno de desarrollo integrado de código abierto basado en Java. Este lenguaje se ha utilizado para el desarollo de forma local, sin embargo, para poder publicar el proyecto a través de internet es necesario emplear *p5.js*[^4], que se define como una librería *JavaScript* perteneciente al lado del cliente que posibilita la creación de experiencias interactivas y gráficas, basado en el núcleo de *Processing*.
 
-Por tanto, el proyecto ha sido desarrollado totalmente en *Processing* y, dado que *p5.js* tiene su base en el primero, su respectiva conversión es simple. Para realizar esta conversión se he utilizado la herramienta online *HerokuApp*[^4].
+Por tanto, el proyecto ha sido desarrollado totalmente en *Processing* y, dado que *p5.js* tiene su base en el primero, su respectiva conversión es simple. Para realizar esta conversión se he utilizado la herramienta online *HerokuApp*[^5].
 
 El código del proyecto ha sido alterado en su versión en *p5.js*, debido a que esta librería no posee herramientas idénticas a las de *Processing*, pero sí equivalentes, tal es el caso de la colección *ArrayList* que en *p5.js* puede ser reemplazada sencillamente con un array []. Sin embargo, ha habido cambios más drásticos como es el caso de la librería *Pshape* y sus transformaciones, pues en *p5.js* estas transformaciones no pueden ser asignadas a una variable, y se posibilita el uso de las funciones *push()* y *pop()*.
 
@@ -105,286 +107,72 @@ Para obtener el GIF del videojuego se optó por la librería *gifAnimation*, sin
 
 ## Desarrollo del código
 
-El código de esta práctica se estructura en cuatro clases: la clase principal, la clase de ayuda, la clase de planetas y la clase Planeta. La primera alberga los métodos importantes del proyecto, la segunda se trata de un objeto que se encarga de mostrar los textos de la aplicación, la tercera es un objeto que se encarga de almacenar y tratar todos los planetas existentes a través de una colección, y la cuarta es un objeto que representa a cada planeta.
+El código de esta práctica se estructura en cinco clases: la clase principal, la clase de ayuda, la clase de planetas, la clase Planeta y la clase Nave. La primera alberga los métodos importantes del proyecto, la segunda se trata de un objeto que se encarga de mostrar los textos de la aplicación, la tercera es un objeto que se encarga de almacenar y tratar todos los planetas existentes a través de una colección, la cuarta es un objeto que representa a cada planeta, y la quinta es un objeto que representa a la nave espacial. Dado que esta práctica es una mejora de la anterior (*Planetario*)[^1], sólo se procederá a explicar el código nuevo que se haya añadido.
 
 A continuación se procederá a explicar el código realizado en *Processing*, empezando con la clase principal:
 
 #### Variables empleadas
 Para conseguir que la aplicación funcione adecuadamente, se ha empleado una serie de variables con determinadas funciones, tal y como se puede apreciar en el siguiente fragmento de código:
 
+    ...
     //--------Objetos personalizados----------//
-    Points points; // Colección de planetas introducidos por el usuario
-    Points sats; // Colección de satélites generados para el Sistema solar
-    Points solar; // Colección de planetas correspondiente al Sistema solar
-    Planet center; // Estrella central por defecto en modo creación
-    Help help; // Objeto para mostras mensajes de ayuda
-
-    //-------Variables para el fondo del planetario--------//
-    PImage backG;
-    int sizeX, sizeY;
-
-    //--------Variables para controlar el zoom aplicado---------//
-    float zoom, countZoom, minScroll, maxScroll;
-
-    //-------Variables para controlar el radio de los planetas creados--------//
-    int radius, minRadius, maxRadius;
-
-    //-------Variable que controla la roación vertical-------//
-    float rotateX;
-
-    //--------Contadores de planetas para ambos modos---------------//
-    int pos, posIni;
-
-    //--------Variables de estado----------//
-    boolean btnHelp, newDraw;
-
-    //-------Vector para controlar las pulsaciones---------//
-    boolean [] keys = new boolean[5];
-
-    //-------Listas de valores para el Sistema solar-----------//
-    float [] radiusP, distP; // Radios y distancias al Sol
-    String [] paths; // Rutas de texturas de cada planeta
+    Aircraft nave; // Objeto volador que se controla
+    
+    //---------Variables de estado---------//
+    boolean naveCamara, controlsNave; // Controla el estado de la cámara. Controla si se muestran los controles de la nave    
+    ...
 
 <br/>
 
 #### Función *setup()*
 
-En esta función se han inicializado las distintas variables existentes, la imagen de fondo, los valores de los planetas del Sistema solar, las variables de control, entre otros. Además, se ha forzado la pantalla completa con *fullScreen(P3D)* para una mejor visualización.
+En esta función se han inicializado las distintas variables existentes y creado el objeto *Aircraft*.
 
     void setup() {
-      fullScreen(P3D); // Obliga a usar pantalla completa
-
-      //------Carga de fondo y dimensiones de la imagen-----//
-      backG = loadImage("media/space.jpg");  
-      sizeX = backG.width;
-      sizeY = backG.height;
-
-      initPlanets(); // Se inicializan los valores el Sistema solar
-
-      rotateX = 0; //Rotación vertical
-
-      //------Radio de los planetas en modo creación------//
-      radius = 30;
-      minRadius = 20;
-      maxRadius = 200;
-
-      //------Zoom aplicado a ambas vistas--------//
-      minScroll = -5;
-      maxScroll = 10;
-      zoom = 1;
-      countZoom = 0;
-
-      //------Número de planetas de ambas vistas-------//
-      pos = 1; // Vista de creación
-      posIni = radiusP.length; // Vista de visualización
-
-      //-----Variables de estado-----//
-      btnHelp = true; // Ayuda activada
-      newDraw = false; // Modo creación o visualización
+      ...
+      naveCamara = false; // Falso para iniciar con la cámara general
+      controlsNave = false; // Falso para mostrar los controles generales
 
       //-------Se crean los planetas del Sistema solar------//
-      solar = new Points();
-      sats = new Points();
-      loadSolar();  
-
-      //------Se crea la estrella central del modo creación-----//
-      points = new Points();
-      center = new Planet(50, 0, 0); //Radio, distancia al centro, ángulo de inicio
-      points.appendItem(center);
-
-      help = new Help(); // Objeto de ayuda
+      nave = new Aircraft(); // Se crea el objeto
+      ...
     }
 
-<br/>
-
-#### Función de inicialización *initPlanets()*
-
-En esta función se inicializan los tres vectores que almacenan los datos de cada planeta del Sistema solar, tanto el radio de cada uno, su distancia al Sol y la textura elegida.
-
-        void initPlanets() {
-          radiusP = new float[]{80, 8, 12, 12, 18, 35, 30, 23, 22, 5};
-          distP = new float[]{0, 100, 140, 170, 250, 325, 425, 500, 575, 625};
-          paths = new String[]{"media/sol.png", "media/mercurio.png", 
-                               "media/venus.png", "media/tierra.jpg", 
-                               "media/marte.jpg", "media/jupiter.jpg",
-                               "media/saturno.jpg", "media/urano.jpg",
-                               "media/urano.jpg", "media/pluton_casi_planeta.jpg"}; 
-        }
-        
-<br/>
-
-#### Función de creación *loadSolar()*
-
-En esta función se genera un objeto Planeta para cada uno de los planetas y satélites deseados en el Sistema solar. Para cada planeta se emplean sus respectivos valores de los tres vectores inicializados anteriormente, mientras que para cada satélite se aplica un *translate()* a la posición central del planeta actual y se genera un nuevo objeto Planeta que orbitará a su alrededor.
-
-    void loadSolar() {
-      Planet pt; 
-      Planet sat; 
-      for (int i = 0; i < posIni; i++) {
-        //----Se crea cada planeta y se asigna su textura----//
-        pt = new Planet(radiusP[i], distP[i], random(0, 360));
-        solar.appendItem(pt);
-        pt.setTexture(loadImage(paths[i]));
-
-        //-----Se crea un satélite para cada planeta-----//
-        pushMatrix();
-        translate(pt.x, pt.y, pt.z);
-        sat = new Planet(5, pt.radius + 5, random(0, 360));    
-        sats.appendItem(sat);  
-        popMatrix();
-      }
-    }
-    
 <br/>
 
 #### Función de dibujado general *draw()*
 
-Esta función es la que se ocupa de mantener el tablero actualizado, y está constituida en tres secciones: la primera se encarga de comprobar si se ha activado el mensaje de ayuda; la segunda se encarga de comrpobar el tamaño actual de la pantalla para saber si la imagen de fondo debe o no ser redimensionada y, de este modo, evitar una excepción; la tercera parte se encagra de comprobar el modo en el que está la aplicación y, según ello, dibujar el Sistema solar o los planetas creados por el usuario.
+Esta función es la que se ocupa de mantener el tablero actualizado, y la que se encarga de cambiar el modo de cámara según la variable *naveCamara*. Lo primero que se realiza es comprobar si la vista de ayuda está activa, si lo está, se cambia el modo de cámara al modo general para evitar que la vista de ayuda se vea desconfigurada. Además, el método *help.drawControls()* se encarga de mostrar los controles generales de la aplicación o los controles de la nave espacial, según si se ha pulsado el botón *GENERAL*. 
+
+Posteriormente se comprueba si la vista en primera persona está activa o no, para que, finalmente, la nave se ejeucte con la función *nave.runAircraft()*.
 
     void draw() {
-      //-------Se comprueba si la ayuda está activada-------//
-      if (btnHelp){  
-        help.drawTextHelp();
-        help.drawSquareHelp();
-        help.drawStartButton();
-        return;
-      }
-
-      //------Comprobación del tamaño de pantalla y dibujado--------//
-      if (width != sizeX || height != sizeY) {
-        backG.resize(width, height);      
-      }
-
-      background(backG);   
-      help.drawSquareHelp();
-      help.drawNewPlanets();
-
-      //------Modo creación o modo visualización-------//    
-      if (newDraw){    
-        help.drawInfo();
-        drawPlanets(false);    
-      }else{
-        help.drawSystem();
-        drawPlanets(true);
-        if (!newDraw) drawSats();
-      }
-      moveShape();
-    }
-    
-<br/>
-
-#### Función de dibujado de los satélites *drawSats()*
-
-Esta función se encarga de dibujar el satélite natural de la Tierra, la Luna, y los anillos de Saturno. Para conseguir esto, se aplica una serie de funciones *translate()* para mover el eje de coordenadas al punto deseado, empleando todo esto dentro de las funciones *pushMatrix()* y *popMatrix()*.
-
-    void drawSats() {
-      //-----Se dibuja la Luna-----//  
-      Planet planet = sats.getItem(3);        
-      pushMatrix();   
-      translate(width/2, height/2, -150);
-      noFill(); 
-      rotateX((-PI/8)+rotateX);
-      scale(zoom);
-      translate(solar.getItem(3).x, solar.getItem(3).y, solar.getItem(3).z);   
-      translate(planet.x, planet.y, planet.z);        
-      planet.runPlanet();    
-      popMatrix();
-      
-      //-----Actualización de ángulos y coordenadas------//
-      planet.updateAngle();
-      planet.updateCoords(); 
-
-      //------Se dibujan los anillos de Saturno-----//
-      planet = sats.getItem(6);   
-      pushMatrix();   
-      translate(width/2, height/2, -150);
-      rotateX((-PI/8)+rotateX);      
-      scale(zoom);
-      translate(solar.getItem(6).x, solar.getItem(6).y, solar.getItem(6).z);        
-      rotateX((PI/2.66)+rotateX);
-
-      //----Los anillos están compuestos por varias figuras 'ellipse()'
-      stroke(195, 150, 74);
-      for (int j = 0; j <= 24; j+=2){        
-        ellipse(0, 0, 2*planet.dist+j, (2*planet.dist)+j);
-      }
-
-      noStroke();
-      popMatrix();  
-      
-      //-----Actualización de ángulos y coordenadas------//
-      planet.updateAngle();
-      planet.updateCoords(); 
-    }
-    
-<br/>
-
-#### Función de dibujado de los planetas *drawPlanets()*
-
-Esta función se encarga de dibujar cada planeta, ya sea del Sistema solar o los creados por el usuario, además de ibujar las órbitas que describe cada uno de ellos, empleando la función *ellipse()*. Cada planeta tiene su función *.run()*, la cual se encarga de aplicar un *shape()* de la figura. Al igual que los satélites, los planetas se crean del mismo modo, con la diferencia que se utiliza como punto central la posición del Sol.
-
-    void drawPlanets(boolean isSolar) {
-      //-----Se comprueba el modo en el que se encuentra-----//
-      int aux = isSolar ? posIni : pos;
-      for (int i = 0; i < aux; i++){
-
-        //----Según el modo, se obtiene un planeta de las colecciones-----//
-        Planet planet = isSolar ? solar.getItem(i) : points.getItem(i);
-
-        //------Trazado de la óribta--------//
-        pushMatrix();
-        translate(width/2, height/2, -150);
-        rotateX((PI/2.66)+rotateX);
-        scale(zoom);
-        ellipse(0, 0, 2*planet.dist, (2*planet.dist));
-        popMatrix();
-
-        //--------Dibujado del planeta actual--------//
-        pushMatrix();   
-        translate(width/2, height/2, -150);
-        noFill(); 
-        rotateX((-PI/8)+rotateX);
-        scale(zoom);
-        translate(planet.x, planet.y, planet.z);    
-        planet.runPlanet();    
-        popMatrix();
-
-        //--------Actualización de ángulos y coordenadas----------//
-        planet.updateAngle();
-        planet.updateCoords();     
-      }
-    }
-    
-<br/>
-
-#### Función que comprueba algunas colisiones *checkNewPlanet()*
-
-Esta función se encarga de comprobar si el planeta que se creará colisionará o no con algunos planetas, para este cometido se comprueba el extremo derecho e izquierdo del planeta, comparando si existe algún planeta que ocupe estas posiciones.
-
-    boolean checkNewPlanet(float mouseXPos) {
-       float leftPos = 0;
-       float rightPos = 0;
-
-       if (mouseXPos > width/2) {
-          leftPos = mouseXPos - width/2 - radius;
-          rightPos = mouseXPos - width/2 + radius;
-       }else{
-          leftPos = width/2 - mouseXPos - radius;
-          rightPos = width/2 - mouseXPos + radius;
-       }
-
-       print("pos " + leftPos + " " + rightPos + "\n");
-
-       for(int i = 0; i < pos; i++) {
-         Planet pt = points.getItem(i);
-         print((pt.x - pt.radius) + " " + (pt.x + pt.radius) + "\n");
-         if (rightPos <= pt.x + pt.radius && rightPos >= pt.x - pt.radius || 
-             leftPos >= pt.x - pt.radius && leftPos <= pt.x + pt.radius || 
-             rightPos <= -(pt.x + pt.radius) && rightPos >= -(pt.x - pt.radius) ||
-             leftPos >= - (pt.x - pt.radius) && leftPos <= -(pt.x + pt.radius)) return false;
-       }
-       print("------------\n");
-       return true;
+        //-------Se comprueba si la ayuda está activada-------//
+        if (btnHelp){  
+            camera(width/2, height/2, 937, // eyeX, eyeY, eyeZ
+                   width/2, height/2, 0.0, // centerX, centerY, centerZ
+                   0.0, 1.0, 0.0); // upX, upY, upZ
+            help.drawTextHelp();
+            help.drawSquareHelp();
+            help.drawStartButton();
+            help.drawControls(); // Dibujado de los controles generales o de la nave
+            help.drawOwner();
+            return;
+        }
+        
+        //-------Se comprueba si se debe activar la vista en primera persona-------//
+        if (naveCamara) {
+            camera(nave.x, nave.y, nave.z, // eyeX, eyeY, eyeZ
+                width, height/2, nave.z, // centerX, centerY, centerZ 
+                0.0, 1.0, 0.0); // upX, upY, upZ
+        }else{
+            camera(width/2, height/2, 937, // eyeX, eyeY, eyeZ
+                width/2, height/2, 0.0, // centerX, centerY, centerZ
+                0.0, 1.0, 0.0); // upX, upY, upZ
+        }
+        
+        nave.runAircraft(); // Se ejecuta el renderizado de la nave
+        ...
     }
     
 <br/>
@@ -397,88 +185,66 @@ Las funciones restantes se corresponden con aquellas encargadas de recoger las p
 
 #### Clase *Help*
 
-Esta clase es la encargada de mostrar y generar todos los textos de la aplicación, así como los diversos botones existentes, tales como los que se presentan a continuación:
-
-    //-----Función que dibuja el botón de ayuda-----//
-    void drawSquareHelp() {
-        fill(0);
-        stroke(255);
-        rect((width - 50), btnYH, btnWH, btnH);   
-        fill(255);
-        textSize(14);
-        text("HELP", (width - 50)+5, btnYH+15);
-        fill(0);
-      }
-
-    //-----Función que dibuja los textos en tiempo real en la pantalla de dibujado------//
-    void drawInfo() {
-        fill(255);
-        textSize(18);
-        text("Radius: " + radius, 10, 20); 
-        text("Planets: " + pos, 10, 40);
-        fill(0);
-      }
-
-    //------Función que dibuja el botón de inicio-----//
-    void drawStartButton() {
-        fill(0);
-        stroke(255);
-        rect(((width/2) - 25), (height/5 + 640), btnWS, btnH);   
-        fill(255);
-        textSize(14);
-        text("CONTINUE", ((width/2) - 25) + 14, (height/5 + 640) + 15);
-        fill(0);
-      }
-      
-<br/>
-
-#### Clase *Points*
-
-Esta clase se encarga de almacenar todos los planetas existentes, empleando para ello una colección del tipo *ArrayList()*. Esta clase tiene sus funciones delegadas para obtener un planeta, añadir uno nuevo, eliminar el último o limpiar toda la lista.
-
-    //-------Función que limpia la lista----------//
-    public void clearList(){
-      this.points.clear(); 
-    }  
+En esta clase se ha añadido un nuevo método que se encarga de añadir un botón que se encarga de mostrar los controles *GENERALES* de la aplicación, o los controles de la nave espacial (*AIRCRAFT*).
     
-    //-------Función que elimina el último elemento de la lista---------//
-    public void removeLast() {
-        this.points.remove(pos - 1);
-      }
+    //------Función que dibuja el botón de cambio de controles------//
+    void drawControls() {
+        fill(0);
+        stroke(255);
+        rect((width/2) + 140, (height/5) + 280, btnWS, btnH);   
+        
+        fill(255);
+        textSize(14);        
+        if (controlsNave) {
+            text("AIRCRAFT", ((width/2) + 140) + 14, ((height/5) + 280) + 15);
+        }else{
+            text("GENERAL", ((width/2) + 140) + 16, ((height/5) + 280) + 15);
+        }
+        fill(0);
+    }
       
 <br/>
 
-#### Clase *Planet*
+#### Clase *Aircraft*
 
-Esta clase se encarga de generar un objeto Planet, con características como su radios, distancia al centro de rotación, rapidez de movimiento, orientación, así como sus tres componentes X, Y, Z. Esta clase emplea un tipo *PShape* para generar la esfera con todos sus atributos. Este objeto acepta modificaciones a sus atributos, además de aceptar una textura que lo recubra, y otro métodos como *runPlanet()* que muestras la figura por pantalla aplicándole un iluminado con *lights()*. 
+Esta clase se encarga de generar un objeto *Aircraft*, el cual será desplazado por el usuario a través del sistema planetario. Este objeto emplea un *PShape* cargado con un objeto *.obj* de una nave espacial. Así pues, en su constructor se definen sus coordenadas, se carga el objeto y se define su velocidad de movimiento. El segundo método mostrado se encarga de dibujar la nave en las nuevas coordenadas, además de aplicarle un *zoom* según se haya solicitado, y unas rotaciones para enderezar el objeto. Aparte de estos métodos, esta clase dispone de actualizadores de coordenadas, así como un método para reiniciar la posición de la nave.
 
-Además, existen dos métodos que se encargan de actualizar el estado de la figura actual, ya sea mediante el ángulo de rotación, o las coordenadas X, Z, de la figura. La coordenada Y no se actualiza dado que no sufren cambios en este eje.
+    //----------Constructor de la nave espacial-----------//
+    Aircraft() {
+        this.x = 50;
+        this.y = height/2;
+        this.z = 0;
 
-    public void runPlanet() {
-        rotateY(radians(angle)); 
-        lights();
-        shape(sphere);
-    } 
+        nave = loadShape("media/nave/space-shuttle-orbiter.obj");
 
-    public void updateAngle() {
-        this.angle += this.orientation * this.fast;
-        if (abs(angle) > 360) this.angle = 0;
+        this.speed = 5;
+    }
+
+    //-----------Renderizado de la nave espacial----------//
+    void runAircraft() {
+        pushMatrix();
+        translate(this.x, this.y, this.z);
+        scale(0.03*zoom);
+        rotateX(PI);
+        rotateY(-PI/2);
+        shape(nave);
+        popMatrix();
     }
 
 <br/>
 
 Para consultar el código fuente de la aplicación, puede dirigirse al siguiente enlace:
 
-[Consultar código fuente](https://github.com/JoseMAP-99/JoseMAP-99.github.io/tree/master/codes/PLANETARIUM)
+[Consultar código fuente](https://github.com/JoseMAP-99/JoseMAP-99.github.io/tree/master/codes/PLANETARIUM_WITH_CAM)
 
 <br/>
 <br/>
 
 ## Resultados obtenidos
 
-A continuación se muestra la ejecución de la aplicación en *Processing* en formato de GIF (figura 5).
+A continuación se muestra la ejecución de la aplicación en *Processing* en formato de GIF (figura 7).
 
-![](/images/planetarium/funcionamiento.gif "Fig. 5: Funcionamiento de la aplicación")
+![](/images/planetarium_with_cam/funcionamiento.gif "Fig. 5: Funcionamiento de la aplicación")
 
 <br/>
 <br/>
@@ -510,6 +276,7 @@ Si desea descargar el código fuente, puede hacerlo desde el siguiente enlace:
 ## Referencias
 
 [^1]: [Práctica anterior realizada](https://josemap-99.github.io/2021/03/05/planetarium.html)
-[^2]: [Página de consulta sobre *Processing*](https://processing.org/)
-[^3]: [Página de consulta sobre *p5.js*](https://p5js.org/)
-[^4]: [Página de conversión *Processing* a *p5.js*](https://pde2js.herokuapp.com/)
+[^2]: [Página de descarga del modelo](https://clara.io/view/5e324073-0853-4b44-973c-b47906450768)
+[^3]: [Página de consulta sobre *Processing*](https://processing.org/)
+[^4]: [Página de consulta sobre *p5.js*](https://p5js.org/)
+[^5]: [Página de conversión *Processing* a *p5.js*](https://pde2js.herokuapp.com/)
