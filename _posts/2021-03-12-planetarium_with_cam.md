@@ -60,7 +60,7 @@ Tal como se ha mencionado anteriormente, los controles están disponibles desde 
 
 * **Rueda del ratón:** Realiza un *zoom* sobre la figura, según la dirección de la rueda del ratón.
 
-* **Tecla 'S'-'W' o 'Down'-'Up':** Rota la figura verticalmente.
+* **Tecla 'S' - 'W' o 'Down' - 'Up':** Rota la figura verticalmente.
 
 * **Tecla 'C':** Cambia el punto de vista de la cámara (GENERAL o NAVE).
 
@@ -70,7 +70,7 @@ Tal como se ha mencionado anteriormente, los controles están disponibles desde 
 
 * **Click derecho:** Limpia la pantalla eliminando los planetas creados.
 
-* **Tecla '+'-'-':** Aumenta o reduce el radio del siguiente planeta.
+* **Tecla '+' - '-':** Aumenta o reduce el radio del siguiente planeta.
 
 * **Tecla 'X':** Elimina el último planeta creado.
 
