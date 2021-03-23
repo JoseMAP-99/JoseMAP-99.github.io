@@ -126,6 +126,9 @@ Para conseguir que la aplicación funcione adecuadamente, se ha empleado una ser
     PImage backG;
     int sizeX, sizeY;
     
+    //--------Variables que almacenan el color actual--------//
+    float red, green, blue;
+    
 <br/>
 
 #### Función *setup()*
@@ -180,11 +183,219 @@ En esta función se inicializan todas las estructuras del espacio, asignándoles
 
 #### Función de dibujado general *draw()*
 
-Esta función es la que se ocupa de mantener el tablero actualizado, y está constituida en tres secciones: la primera se encarga de comprobar si se ha activado el mensaje de ayuda; la segunda se encarga de comrpobar el tamaño actual de la pantalla para saber si la imagen de fondo debe o no ser redimensionada y, de este modo, evitar una excepción; la tercera parte se encagra de comprobar el modo en el que está la aplicación y, según ello, dibujar el Sistema solar o los planetas creados por el usuario.
+Esta función es la que se ocupa de mantener el tablero actualizado, y está constituida en cinco secciones: la primera se encarga de comprobar si se ha activado el mensaje de ayuda; la segunda se encarga de comprobar el tamaño actual de la pantalla para saber si la imagen de fondo debe o no ser redimensionada y, de este modo, evitar una excepción; la tercera parte se encarga de comprobar el modo en el que está la aplicación (primera o tercera persona), y, según ello, modificar el *camera()* correspondiente; la cuarta parte se encarga de mostrar el plano del expositor y los mensajes en pantall; y la última parte se encarga de controlar la iluminación y de actualizar los movimientos del persoanje y de la visualización de las estructuras.
 
+        void draw() { 
+          //-------Se comprueba si la ayuda está activada-------//
+          if (btnHelp){  
+            camera(); 
+            help.drawTextHelp();
+            help.drawSquareHelp(0);
+            help.drawStartButton();
+            help.drawOwner();
+            help.drawControls();
+            return;
+          }  
 
+          //------Comprobación del tamaño de pantalla y dibujado--------//
+          if (width != sizeX || height != sizeY) {
+            backG.resize(width, height);      
+          }  
+          background(backG); 
 
+          //------Comprobación del modo de cámara--------//
+          if (fpView) { // Primera persona
+            camera(mario.x, mario.y, mario.z,
+                   mario.getFarFocus()[0], mario.angleY, mario.getFarFocus()[1],
+                   0.0, 1.0, 0.0); // upX, upY, upZ
 
+          }else{ // Tercera persona
+            camera(mario.getCloseFocus()[0], mario.y - 100, mario.getCloseFocus()[1],
+                  mario.getFarFocus()[0], mario.angleY, mario.getFarFocus()[1],
+                  0.0, 1.0, 0.0);      
+
+          }
+
+          //-------Dibujado del espacio y mensajes-------//
+          drawPlane();  
+          pushMatrix();
+          camera();  
+          help.drawSquareHelp(0);
+          help.drawSystem();
+          popMatrix(); 
+
+          //-------Selección de iluminación--------//
+          if (keys[4]) {
+            lights();
+            mode = "NORMAL LIGHT";
+          }
+          if (keys[5]) {
+            pointLight((int)255*red, (int)255*green, (int)255*blue, mouseX, mouseY, 400);
+            lightSpecular(100, 100, 100);
+            directionalLight(0.8, 0.8, 0.8, 0, 0, -1);
+            mode = "SPECULAR LIGHT";
+          }
+          if (keys[6]) {
+            float val = (float) mouseX/(float) width * (float) 255;
+            ambientLight( (int) val*red, 255*green, 255*blue);
+            directionalLight(50, 200, 50, -1, 0, 0);
+            pointLight(204, 153, 0, mouseX, mouseY, 400);
+            mode = "SPOT LIGHT";
+          }
+          if (keys[7]) {
+            float val = (float) mouseX/(float) width * (float) 255;
+            ambientLight( (int) val*red, 255*green, 255*blue);
+            directionalLight(50, 200, 50, -1, 0, 0);
+            spotLight(204, 153, 100, mouseX, mouseY, 500, 0, 0, -1, PI/2, 600);
+            mode = "POINT LIGHT";
+          } 
+
+          if(keys[8]) {    
+            ambientLight(20, 20, 20);
+            mode = "POINT LIGHT (DARK) --> LEFT CLICK FOR LIGHTS";
+            if (mousePressed && mouseButton == LEFT) {
+              pointLight(255*red, 255*green, 255*blue, mouseX, mouseY, 400);
+              directionalLight(0.8, 0.8, 0.8, 0, 0, -1);
+            }    
+          }
+
+          //------Visualización y actualización de movimiento---------/
+          showStructs();  
+          mario.runPerson();  
+          moveShape();
+        }
+
+<br/>
+
+#### Función de dibujado del plano y estructuras
+
+Estas funciones se encargan de generar el plano sobre el que se sitúan las estructuras, empleando para ello un *beginShape()* junto a su *endShape()*; y de mostrar las estructuras sobre el plano detallado recientemente.
+
+    void drawPlane() {
+        pushMatrix();
+        fill(0);
+        beginShape();    
+        vertex(-(widthBox), heightBox/2, depthBox);
+        vertex(-(widthBox), heightBox/2, -depthBox);
+        vertex((widthBox), heightBox/2, -depthBox);
+        vertex((widthBox), heightBox/2, depthBox);
+        endShape(CLOSE);  
+        popMatrix();
+    }
+
+    void showStructs() {
+        for (Structure struct : this.structs) {
+            struct.runShape();  
+        }
+    }
+
+<br/>
+
+#### Funciones restantes
+
+Las funciones restantes se corresponden con aquellas encargadas de recoger las pulsaciones de las teclas como *keyPressed()* o *keyReleased()*, además de funciones para capturar las pulsaciones del ratón como *mousePressed()* o *mouseWheel()*; y una especial que se encarga de generar las tres componentes *RGB* para la iluminación.
+
+<br/>
+
+#### Clase *Help*
+
+Esta clase es la encargada de mostrar y generar todos los textos de la aplicación, así como los diversos botones existentes, tales como los que se presentan a continuación:
+
+    //-----Función que dibuja el botón de ayuda-----//
+    void drawSquareHelp() {
+        fill(0);
+        stroke(255);
+        rect((width - 50), btnYH, btnWH, btnH);   
+        fill(255);
+        textSize(14);
+        text("HELP", (width - 50)+5, btnYH+15);
+        fill(0);
+    }
+    
+    //------Función que dibuja el modo de iluminación actual-----//
+    void drawSystem() {
+        fill(255);
+        textSize(18);
+        text(mode, 10, 20); 
+        fill(0);
+    }
+      
+    //------Función que dibuja el botón de inicio-----//
+    void drawStartButton() {
+        fill(0);
+        stroke(255);
+        rect(((width/2) - 25), (height/5 + 640), btnWS, btnH);   
+        fill(255);
+        textSize(14);
+        text("CONTINUE", ((width/2) - 25) + 14, (height/5 + 640) + 15);
+        fill(0);
+    }
+    
+<br/>
+ 
+#### Clase *Person*
+
+Esta clase se encarga de representar al personaje *Mario Bros.*, empleando para ello la función "loadShape()". Este objeto posee sus tres coordenadas, al igual que sus respectivos ángulos para permitir las rotaciones verticales y horizontales. Además, posee dos métodos de suma importancia para la función *camera()*, la función *getFarFocus()* y *getCloseFocus()*; la primera se encarga de obtener nuevas coordenadas X y Z para el personaje en tercera persona, usando el ángulo de rotación horizontal actual; la segunda se encarga de obtener nuevas coordeandas X y Z para el centro o fondo de la cámara, es decir, la zona que el personaje ve. Se debe calcular ambos puesto que s ehan permitido las rotaciones del personaje, pudiendo desplazarse a la vez tanto en X y Z.
+
+    //------Cálculo del punto lejano para camera()---------//
+    float[] getFarFocus() {
+        // Width*1000 -> Fondo en infinito y menos infinito
+        this.focusX = sin(radians(this.angle))*(width*1000);
+        this.focusZ = cos(radians(this.angle))*(-width*1000);
+
+        return new float[]{focusX, focusZ};
+    }
+  
+    //------Cálculo del punto cercano en tercera persona para camera()---------//
+    float[] getCloseFocus() {
+        // 300 -> Fondo en personaje en tercera persona
+        float xpos = this.x + sin(radians(this.angle))*(-300);
+        float zpos = this.z + cos(radians(this.angle))*(300);
+
+        return new float[]{xpos, zpos};
+    }
+
+<br/>
+
+#### Clase *Structure*
+
+Esta clase se encarga de respresentar cada estructura del expositor, empleando para ello un *loadShape()*, además, cada estructura posee un nombre identificativo, un color inicial y varios parámetros para posicionarla, rotarla y escalarla adecuadamente. Cada estructura posee un nombre que estará situado por encima de cada una de ellas, este nombre siempre estará de frente al personaje, haciendo que sea más fácil su lectura.
+
+    //--------Función que imprime y rota el nombre según el personaje-----------//
+    void drawTitle() {
+        pushMatrix();
+        rotateY(-radians(mario.angle));
+        fill(255);
+        textSize(200);    
+        text(this.title, titlePos[0], titlePos[1], titlePos[2]);
+        popMatrix();
+    } 
+    
+
+Para consultar el código fuente de la aplicación, puede dirigirse al siguiente enlace:
+
+[Consultar código fuente](https://github.com/JoseMAP-99/JoseMAP-99.github.io/tree/master/codes/CUSTOM_SCENE)
+
+<br/>
+<br/>
+
+## Resultados obtenidos
+
+A continuación se muestra la ejecución de la aplicación en *Processing* en formato de GIF (figura 5).
+
+![](/images/custom_scene/funcionamiento.gif "Fig. 5: Funcionamiento de la aplicación")
+
+<br/>
+<br/>
+
+## Descarga del código fuente
+
+Si desea descargar el código fuente, puede hacerlo desde el siguiente enlace:
+
+[Descarga del código fuente](https://downgit.github.io/#/home?url=https://github.com/JoseMAP-99/JoseMAP-99.github.io/tree/master/codes/CUSTOM_SCENE)
+
+<br/>
+<br/>
 
 [^1]: [Página de consulta sobre *Processing*](https://processing.org/)
 [^2]: [Página de consulta en *Clara.io*](https://clara.io/)
