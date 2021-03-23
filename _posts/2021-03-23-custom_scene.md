@@ -32,7 +32,7 @@ La primera vista a explicar es la vista principal sobre la que se encuentran tod
 
 | Vista principal |
 | - |
-| ![](/images/custom_scene/vVisualización.PNG "Fig. 2: Vista del expositor (Primera persona)") |
+| ![](/images/custom_scene/vVisualizacion.PNG "Fig. 2: Vista del expositor (Primera persona)") |
 
 La tercera vista, ya mencionada anteriormente, es la de ayuda, accesible desde el botón *HELP* o pulsando la tecla 'H' cuando se necesite. En esta vista se explica de forma general cómo funciona la aplicación mostrando los controles disponibles, tanto para el manejo general (figura 3), como para el manejo del personaje (figura 4), el cambio entre estas dos ayudas se realiza pulsando sobre el botón *GENERAL* o *MARIO*.
 
