@@ -86,6 +86,106 @@ Para obtener el GIF del videojuego se optó por la librería *gifAnimation*, sin
 
 ## Desarrollo del código
 
+
+El código de esta práctica se estructura en cuatro clases: la clase principal, la clase de ayuda, la clase de personaje y la clase estructura. La primera alberga los métodos importantes del proyecto, la segunda se trata de un objeto que se encarga de mostrar los textos de la aplicación, la tercera se encarga de generar y controlar todo lo relacionado al personaje de la aplicación, y la última es un objeto que se conrresponde con el tipo de todas las estructuras mostradas sobre el expositor. 
+
+A continuación se procederá a explicar el código realizado en *Processing*, empezando con la clase principal:
+
+#### Variables empleadas
+
+Para conseguir que la aplicación funcione adecuadamente, se ha empleado una serie de variables con determinadas funciones, tal y como se puede apreciar en el siguiente fragmento de código:
+
+    //--------Objetos personalizados----------//
+    Help help; // Objeto para mostrar mensajes de ayuda
+    Person mario; // Objeto encargado del personaje de la aplicación
+    Structure [] structs; // Colección de estructuras
+
+    //--------Variables de estado----------//
+    boolean btnHelp, fpView, controlsMario;
+
+    //-------Vector para controlar las pulsaciones---------//
+    boolean [] keys = new boolean[11];
+
+    //----------Vector de rutas a objetos------------//
+    String [] paths = new String[] {
+      "media/brasil/cristo-redentorstl.obj",
+      "media/egipto/pyramid.obj",
+      "media/mexico/chichen-itza.obj",
+      "media/paris/eiffel-tower.obj",
+      "media/roma/coliseum.obj"
+      };
+  
+    //------Variables de iluminación---------//
+    String mode = "NORMAL LIGHTS"; // Variable que especifica el modo de iluminación
+    int indexFilter = 5; // Variable para controlar las iluminaciones
+
+    //----------Variables del espacio expositor-----------//
+    int widthBox, heightBox, depthBox;
+
+    //-------Variables para el fondo del planetario--------//
+    PImage backG;
+    int sizeX, sizeY;
+    
+<br/>
+
+#### Función *setup()*
+
+En esta función se han inicializado las distintas variables existentes, la imagen de fondo, los valores de las distintas estructuras, las variables de control, entre otros. Además, se ha forzado la pantalla completa con *fullScreen(P3D)* para una mejor visualización.
+
+    void setup() {
+      //size(1920, 1080, P3D);
+      fullScreen(P3D); // Obliga a usar pantalla completa
+
+      //------Carga de fondo y dimensiones de la imagen-----//
+      backG = loadImage("media/background.jpg");
+      sizeX = backG.width;
+      sizeY = backG.height;
+
+      //-----Variables de estado-----//
+      btnHelp = true; // Ayuda activada
+      fpView = false; // Modo primera o tercera persona
+      controlsMario = false; // Tipo de controles a mostrar
+
+      //-----Inicialización de variables principales---------//
+      help = new Help();
+      mario = new Person();
+      structs = new Structure[5];
+
+      generateColor(); // Se generan colores iniciales para la iluminación
+      initStructs(); // Se crean las estructuras
+
+      keys[4] = true; // Luces normales por defecto
+
+      //------Medidas del espacio expositor---------//
+      widthBox = 20000;
+      heightBox = 3000;
+      depthBox = 20000;
+    }
+    
+<br/>
+
+#### Función de inicialización *initStructs()*
+
+En esta función se inicializan todas las estructuras del espacio, asignándoles su posición, nombre, rotación, reescalado, entre otros.
+
+    void initStructs() {
+      this.structs[0] = new Structure(this.paths[0], new float[]{0, 425, -3000}, 20, "The Christ Redeemer", new float[]{-950, -1500, 0});
+      this.structs[1] = new Structure(this.paths[1], new float[]{-4000, 1235, -4000}, 400, "Pyramid of Giza", new float[]{-500, -700, 0});
+      this.structs[2] = new Structure(this.paths[2], new float[]{-6000, 1730, 0}, 500, "Chichen Itza", new float[]{-600, -2500, 0});
+      this.structs[3] = new Structure(this.paths[3], new float[]{0, 1610, 6000}, 6, "The Eiffel Tower", new float[]{-850, -2800, 0});
+      this.structs[4] = new Structure(this.paths[4], new float[]{6000, 1500, 0}, 3000, "Roman Colosseum", new float[]{-800, -1500, 0});
+    }
+    
+<br/>
+
+#### Función de dibujado general *draw()*
+
+Esta función es la que se ocupa de mantener el tablero actualizado, y está constituida en tres secciones: la primera se encarga de comprobar si se ha activado el mensaje de ayuda; la segunda se encarga de comrpobar el tamaño actual de la pantalla para saber si la imagen de fondo debe o no ser redimensionada y, de este modo, evitar una excepción; la tercera parte se encagra de comprobar el modo en el que está la aplicación y, según ello, dibujar el Sistema solar o los planetas creados por el usuario.
+
+
+
+
+
 [^1]: [Página de consulta sobre *Processing*](https://processing.org/)
 [^2]: [Página de consulta en *Clara.io*](https://clara.io/)
 [^3]: [Página de consulta sobre *Mario Bros.*](https://es.wikipedia.org/wiki/Mario_(personaje))
