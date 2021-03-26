@@ -273,6 +273,15 @@ Para consultar el código fuente de la aplicación, puede dirigirse al siguiente
 <br/>
 <br/>
 
+## Resultados obtenidos
+
+A continuación se muestra la ejecución de la aplicación en *Processing* en formato de GIF (figura 5).
+
+![](/images/facial_recognition/funcionamiento.gif "Fig. 5: Funcionamiento de la aplicación")
+
+<br/>
+<br/>
+
 ## Descarga del código fuente
 
 Si desea descargar el código fuente, puede hacerlo desde el siguiente enlace:
