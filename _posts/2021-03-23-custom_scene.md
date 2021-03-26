@@ -34,7 +34,7 @@ La primera vista a explicar es la vista principal sobre la que se encuentran tod
 | - |
 | ![](/images/custom_scene/vVisualizacion.PNG "Fig. 2: Vista del expositor (Primera persona)") |
 
-La tercera vista, ya mencionada anteriormente, es la de ayuda, accesible desde el botón *HELP* o pulsando la tecla 'H' cuando se necesite. En esta vista se explica de forma general cómo funciona la aplicación mostrando los controles disponibles, tanto para el manejo general (figura 3), como para el manejo del personaje (figura 4), el cambio entre estas dos ayudas se realiza pulsando sobre el botón *GENERAL* o *MARIO*.
+La segunda vista, ya mencionada anteriormente, es la de ayuda, accesible desde el botón *HELP* o pulsando la tecla 'H' cuando se necesite. En esta vista se explica de forma general cómo funciona la aplicación mostrando los controles disponibles, tanto para el manejo general (figura 3), como para el manejo del personaje (figura 4), el cambio entre estas dos ayudas se realiza pulsando sobre el botón *GENERAL* o *MARIO*.
 
 | Vista de ayuda |
 | - |
@@ -86,8 +86,7 @@ Para obtener el GIF del videojuego se optó por la librería *gifAnimation*, sin
 
 ## Desarrollo del código
 
-
-El código de esta práctica se estructura en cuatro clases: la clase principal, la clase de ayuda, la clase de personaje y la clase estructura. La primera alberga los métodos importantes del proyecto, la segunda se trata de un objeto que se encarga de mostrar los textos de la aplicación, la tercera se encarga de generar y controlar todo lo relacionado al personaje de la aplicación, y la última es un objeto que se conrresponde con el tipo de todas las estructuras mostradas sobre el expositor. 
+El código de esta práctica se estructura en cuatro clases: la clase principal, la clase de ayuda, la clase de personaje y la clase estructura. La primera alberga los métodos importantes del proyecto, la segunda se trata de un objeto que se encarga de mostrar los textos de la aplicación, la tercera se encarga de generar y controlar todo lo relacionado al personaje de la aplicación, y la última es un objeto que se corresponde con el tipo de todas las estructuras mostradas sobre el expositor. 
 
 A continuación se procederá a explicar el código realizado en *Processing*, empezando con la clase principal:
 
