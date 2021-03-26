@@ -268,7 +268,7 @@ Esta clase es la encargada de mostrar y generar todos los textos de la aplicaci�
 El resto de código de la aplicación ha permanecido intacto, por lo que si desea consultarlo, puede dirigirse al informe de la práctica anterior. 
 Para consultar el código fuente de la aplicación, puede dirigirse al siguiente enlace:
 
-[Consultar código fuente](https://github.com/JoseMAP-99/JoseMAP-99.github.io/tree/master/codes/FACIAL_CAMERA)
+[Consultar código fuente](https://github.com/JoseMAP-99/JoseMAP-99.github.io/tree/master/codes/FACIAL_RECOGNITION)
 
 <br/>
 <br/>
@@ -277,7 +277,7 @@ Para consultar el código fuente de la aplicación, puede dirigirse al siguiente
 
 Si desea descargar el código fuente, puede hacerlo desde el siguiente enlace:
 
-[Descarga del código fuente](https://downgit.github.io/#/home?url=https://github.com/JoseMAP-99/JoseMAP-99.github.io/tree/master/codes/FACIAL_CAMERA)
+[Descarga del código fuente](https://downgit.github.io/#/home?url=https://github.com/JoseMAP-99/JoseMAP-99.github.io/tree/master/codes/FACIAL_RECOGNITION)
 
 <br/>
 <br/>
