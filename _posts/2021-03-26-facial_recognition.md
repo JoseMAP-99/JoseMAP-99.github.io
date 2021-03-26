@@ -258,7 +258,7 @@ Esta clase es la encargada de mostrar y generar todos los textos de la aplicaci√
       if (controls == 1) {
         text("MARIO", ((width/2) + 140) + 25, ((height/5) + 280) + 15);
       }else if (controls == 2){
-        text("FACIAL", ((width/2) + 140) + 16, ((height/5) + 280) + 15);
+        text("FACIAL", ((width/2) + 140) + 25, ((height/5) + 280) + 15);
       }else{
         text("GENERAL", ((width/2) + 140) + 16, ((height/5) + 280) + 15);
       }
