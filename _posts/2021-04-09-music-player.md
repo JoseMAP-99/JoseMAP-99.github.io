@@ -1,4 +1,4 @@
-# Escena personalizada
+# Reproductor de sonidos
 
 `Autor: José María Amusquívar Poppe`
 
