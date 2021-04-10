@@ -75,6 +75,8 @@ Para la realización de esta práctica se ha empleado *Processing*[^1], que se d
 
 Se ha empleado la librería *Minim*[^1] para realizar todas las manipulaciones de sonidos correspondiente. Y, también, se ha empleado la librería *TimeUnit*[^5], para poder realizar la conversión de milisegundos a una cadena de texto en formato "MM:SS min", la cual se más entendible para el usuario final.
 
+Junto al proyecto se adjuntan canciones de prueba libres de derechos de autor, todas ellas extraídas de la página *Mixkit*[^6]. Razón por la cual, su ficheor de metadatos está vacío por lo que no será posible imprimir esta información en la interfaz de la aplicación.
+
 Para obtener el GIF del videojuego se optó por la librería *gifAnimation*, sin embargo, debido a problemas de lentitud en la captura de *frames*, se optó por obtener el GIF grabando la pantalla y pasándolo a dicho formato final.
 
 <br/>
@@ -438,4 +440,6 @@ Si desea descargar el código fuente, puede hacerlo desde el siguiente enlace:
 [^3]: [Página de consulta sobre *Processing*](https://processing.org/)
 [^4]: [Página de consulta sobre *ID3*](https://id3.org/)
 [^5]: [Página de consulta sobre *TimeUnit*](https://docs.oracle.com/javase/7/docs/api/java/util/concurrent/TimeUnit.html)
+[^6]: [Página de consulta sobre *Mixkit*](https://mixkit.co/free-stock-music/)
+
 
