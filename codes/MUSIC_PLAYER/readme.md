@@ -1,6 +1,6 @@
 ### IMPORTANTE
 
-Es imprescindible que exista la carpeta "data/music/", y dentro tener disponible, como mínimo, una canción o sonido en formato *.mp3* o *.wav*
+Es imprescindible que exista la carpeta "data/music/", y dentro tener disponible, como mínimo, una canción o sonido en formato *.mp3* o *.wav*.
 
 Las canciones proporcionadas en este proyecto son libres de derechos de autor, y fueron extraídas de ![Mixkit](https://mixkit.co/free-stock-music/).
 
