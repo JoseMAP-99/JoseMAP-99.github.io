@@ -30,7 +30,6 @@ El diseño elegido para este proyecto está constituido por dos vistas, una de a
 | - |
 | ![](/images/music_player/vVisualizacion.PNG "Fig. 2: Vista general de la aplicación") |
 
-
 La segunda vista, ya mencionada anteriormente, es la de ayuda, accesible desde el botón *HELP* o pulsando la tecla 'H' cuando se necesite. En esta vista se explica de forma general cómo funciona la aplicación mostrando los controles disponibles, tanto para el manejo mediante el teclado (figura 3), como para el manejo mediante el ratón del ordenador (figura 4), el cambio entre estas dos ayudas se realiza pulsando sobre el botón *KEYBOARD* o *MOUSE*.
 
 | Vista de ayuda |
@@ -38,6 +37,61 @@ La segunda vista, ya mencionada anteriormente, es la de ayuda, accesible desde e
 | ![](/images/music_player/vAyuda1.PNG "Fig. 3: Manual de uso y ayuda de la aplicación (TECLADO)") |
 | - |
 | ![](/images/music_player/vAyuda2.PNG "Fig. 4: Manual de uso y ayuda de la aplicación (RATÓN)") |
+
+#### Controles
+
+Los controles están disponibles desde la vista de ayuda de la aplicación (figura 3 y 4). Los distintos controles disponibles permiten al usuario manipular los sonidos, así como reproducirlos, saltarlos, y, obviamente, disfrutar de la música.
+
+**TECLADO**
+
+* **Tecla 'H':** Abre la vista de ayuda.
+
+* **Tecla 'LEFT' - 'RIGHT':** Cambia al sonido siguiente o anterior.
+
+* **Tecla 'Espacio':** Pausa o reproduce el contenido actual.
+
+* **Tecla '+' - '-':** Aumenta o disminuye el volumen general.
+
+* **Tecla 'M':** Silencia o quita el silencio del sonido actual.
+
+* **Tecla 'R':** Detiene/reinicia el sonido actual.
+
+**RATÓN**
+
+* **Click izquierdo sobre la línea de tiempo:** Adelanta o retrasa el sonido actual.
+
+* **Click izquierdo sobre 'PREV' - 'NEXT':** Cambia al sonido siguiente o anterior.
+
+* **Click izquierdo sobre 'PLAY' - 'PAUSE':** Pausa o reproduce el contenido actual.
+
+* **Click izquierdo sobre 'STOP':** Detiene/reinicia el sonido actual.
+
+<br/>
+<br/>
+
+## Recursos empleados
+
+Para la realización de esta práctica se ha empleado *Processing*[^1], que se define como un lenguaje de programación y entorno de desarrollo integrado de código abierto basado en Java. Además, se ha empleado la librería *Minim*[^1] para realizar todas las manipulaciones de sonidos correspondiente.
+
+Para obtener el GIF del videojuego se optó por la librería *gifAnimation*, sin embargo, debido a problemas de lentitud en la captura de *frames*, se optó por obtener el GIF grabando la pantalla y pasándolo a dicho formato final.
+
+<br/>
+<br/>
+
+## Desarrollo del código
+
+El código de esta práctica se estructura en cuatro clases: la clase principal, la clase de ayuda, la clase de ficheros y la clase de canciones. La primera alberga los métodos importantes del proyecto, la segunda se trata de un objeto que se encarga de mostrar los textos de la aplicación, la tercera se encarga de leer las rutas de los sonidos de la carpeta "data/music/", y la cuarta clase se encarga de cargar estos sonidos en la aplicación, así como proporcionar distintos mecanismos para los sonidos.
+
+A continuación se procederá a explicar el código realizado en *Processing*, empezando con la clase principal:
+
+#### Variables empleadas
+
+Para conseguir que la aplicación funcione adecuadamente, se ha empleado una serie de variables con determinadas funciones, tal y como se puede apreciar en el siguiente fragmento de código:
+
+
+
+
+
 
 
 [^1]: [Página de consulta sobre *Minim*](http://code.compartmental.net/tools/minim/)
