@@ -15,6 +15,8 @@ Para el desarrollo de esta práctica se ha solicitado la realización de una apl
 
 ## Introducción
 
+El proyecto a realizar tiene como objetivo practicar las distintas opciones de manipulación de sonidos, ya sea modificando su amplitud, frecuencia, ganancia, entre otros aspectos. Para este cometido se ha utilizado la librería *Minim*[^1], la cual, gracias a la clase *AudioPlayer*, proporciona una gran versatilidad para controlar cualquier archivo de sonido. Así pues, la aplicación carga por defecto todas las canciones contenidas en la carpeta "data/music/", por lo que será necesario disponer de dicha carpeta con algín fichero de sonido dentro de ella para que la aplicación funcione adecuadamente. Todas estas canciones son cargadas en el proyecto y puestas a disposición del usuario mediante acciones de "Next" y "Previous", además de dos botones para reproducir/pausar y detener el sonido, además de otras acciones como silenciar el sonido, aumentar/reducir volumen o adelantar/atrasar el sonido.
+
 
 <br/>
 <br/>
