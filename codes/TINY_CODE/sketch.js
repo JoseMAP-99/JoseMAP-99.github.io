@@ -2,7 +2,7 @@
 var g,r,s,pends=[];
 
 function setup(){
-  createCanvas(800,600, WEBGL); 
+  createCanvas(800,600,WEBGL); 
   g=0.5;r=12;s=8;init();  
 }
 
@@ -41,6 +41,7 @@ class Pend{
 function mousePressed(){s++;}
 
 function keyPressed(){
-  if (key==='+')
+  if (key==='+'){
     pends=[];s=14;init();
+  }
 }
