@@ -34,6 +34,16 @@ La segunda vista es la de ayuda, accesible desde el botón *HELP* o pulsando la 
 | - |
 | ![](/images/image_viewer/vAyuda.PNG "Fig. 3: Manual de uso y ayuda de la aplicación") |
 
+A continuación se presentarán un ejemplo de cada tipo de filtro presente en la aplicación.
+
+| Filtros aplicados 1|
+| - | -|
+| ![](/images/image_viewer/vBordes.PNG "Fig. 4: Detección de bordes") | ![](/images/image_viewer/vInvertido.PNG "Fig. 5: Colores invertidos") |
+
+| Filtros aplicados 2|
+| - | -|
+| ![](/images/image_viewer/vPixeles.PNG "Fig. 6: Alteración de píxeles") | ![](/images/image_viewer/vCircular.PNG "Fig. 7: Deformación circular") |
+
 #### Controles
 
 Los controles están disponibles desde la vista de ayuda de la aplicación (Figura 3). Los distintos controles disponibles permiten al usuario manipular las imágenes, así como aplicarles filtros, saltarlos, y, obviamente, disfrutar de las imágenes.
@@ -285,9 +295,9 @@ Para consultar el código fuente de la aplicación, puede dirigirse al siguiente
 
 ## Resultados obtenidos
 
-A continuación se muestra la ejecución de la aplicación en *Processing* en formato de GIF (Figura 4).
+A continuación se muestra la ejecución de la aplicación en *Processing* en formato de GIF (Figura 8).
 
-![](/images/image_viewer/funcionamiento.gif "Fig. 4: Funcionamiento de la aplicación")
+![](/images/image_viewer/funcionamiento.gif "Fig. 8: Funcionamiento de la aplicación")
 
 <br/>
 <br/>
