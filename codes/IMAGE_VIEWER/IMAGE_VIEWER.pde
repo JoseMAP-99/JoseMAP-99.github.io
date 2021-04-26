@@ -133,7 +133,7 @@ void updateFilters () {
 }
 
 void setMovement (char k, boolean b) {
-  switch (key) { 
+  switch (k) { 
       case '1':
         keys[0] = b;        
         break;
