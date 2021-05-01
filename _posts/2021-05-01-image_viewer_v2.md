@@ -30,17 +30,17 @@ El diseño elegido para este proyecto está constituido por dos vistas, una de a
 | - |
 | ![](/images/image_viewer_v2/vVisualizacion.PNG "Fig. 2: Vista general de la aplicación") |
 
-La segunda vista es la de ayuda, accesible desde el botón *HELP* o pulsando la tecla 'H' cuando se necesite. En esta vista se explica de forma general cómo funciona la aplicación mostrando los controles disponibles (Figura 3).
+La segunda vista es la de ayuda, accesible desde el botón *HELP* o pulsando la tecla 'H' cuando se necesite. En esta vista se explica de forma general cómo funciona la aplicación mostrando los controles disponibles, tanto los generales (Figura 3), como la información de los *shaders* (Figura 4).
 
 | Vista de ayuda |
-| - |
-| ![](/images/image_viewer_v2/vAyuda.PNG "Fig. 3: Manual de uso y ayuda de la aplicación") |
+| - | -|
+| ![](/images/image_viewer_v2/vAyudaV1.PNG "Fig. 3: Manual de uso y ayuda de la aplicación") | ![](/images/image_viewer_v2/vAyudaV2.PNG "Fig. 4: Información sobre los shaders") |
 
 A continuación se presentarán un ejemplo de cada tipo de filtro fragmento-vértice presente en la aplicación.
 
 | Filtros aplicados |
 | - | -|
-| ![](/images/image_viewer_v2/vAllOptions.PNG "Fig. 4: Lus-Normal-Textura") | ![](/images/image_viewer_v2/vPixeles.PNG "Fig. 5: Movimiento de píxeles") |
+| ![](/images/image_viewer_v2/vAllOptions.PNG "Fig. 5: Lus-Normal-Textura") | ![](/images/image_viewer_v2/vPixeles.PNG "Fig. 6: Movimiento de píxeles") |
 
 #### Controles
 
@@ -92,6 +92,131 @@ Para obtener el GIF del videojuego se optó por la librería *gifAnimation*, sin
 <br/>
 <br/>
 
+## Desarrollo del código
+
+El código de esta práctica se estructura en cuatro clases: la clase principal, la clase de ayuda, la clase de ficheros y la clase de imágenes. La primera alberga los métodos importantes del proyecto, la segunda se trata de un objeto que se encarga de mostrar los textos de la aplicación, la tercera se encarga de leer las rutas de las imágenes de la carpeta "data/images/", y la cuarta clase se encarga de cargar estas imágenes en la aplicación como *PImage*, así como proporcionar distintos mecanismos de interacción.
+
+Tal como se mencionó, esta práctica es un añadido de la práctica anterior, razón por la cual sólo se explicará el código nuevo que se haya escrito, empezando con la clase principal:
+
+#### Variables empleadas
+
+Para conseguir que la aplicación funcione adecuadamente, se ha empleado una serie de variables con determinadas funciones, tal y como se puede apreciar en el siguiente fragmento de código:
+
+    //-------Variables para shaders (Frag-Vert)------//
+    PShader pixelsFV, alloptionsFV;
+
+    //-----Forma esférica (Frag-Vert)-------//
+    PShape sphere;
+
+    //-------Ángulo de rotación de la esfera-----//
+    float ang = 0.0;
+
+    //------Variables de estado y controles-------//
+    boolean onlyFrag, generalControl;
+    
+</br>
+
+#### Función *setup()*
+
+En esta función se han inicializado las distintas variables existentes, y la forma esférica para los *shaders* de fragmento-vértice.
+        
+    void setup () {
+      ...
+      //-------Inicialización de las variables de estado-------//
+      onlyFrag = true;
+      generalControl = true;
+
+      //-------Forma esférica sobre la que se situará la imagen------//
+      sphere = createShape(SPHERE, 180);
+      sphere.setStroke(255);
+      ...
+    }
+    
+</br>
+
+#### Función de dibujado general *draw()*
+
+Esta función es la que se ocupa de mantener el tablero actualizado, y lo único que se añadió respecto a la práctica anterior fue la comprobación del modo de *shaders* a aplicar, además de mostrar un nuevo texto informativo del modo de *shader* actual.
+
+    void draw () {
+      ...
+      //-------Se aplica el filtro deseado, y se muestra la imagen------//
+      updateFilters();
+      if (onlyFrag) {
+        image(actual, width/2, height/2); 
+      } else {    
+        rotateSphere();
+      }
+      ...
+    }
+    
+</br>
+
+#### Función de actualización *rotateSphere()*
+
+Esta función se encarga de actualizar la posición de la esfera, además de actualizar su respectivo ángulo, como la luz que se proyecta sobre ella.
+
+    void rotateSphere() {  
+      pushMatrix(); 
+      pointLight(150, 150, 150, width/2, height/2, 400);
+      translate(width/2, height/2);
+      rotateY(ang);
+      shape(sphere);
+      ang += 0.005; 
+      if (ang > 2*PI) ang = 0.0;
+      popMatrix();
+    }
+    
+</br>
+
+#### Funciones restantes
+
+Las funciones restantes se corresponden con aquellas encargadas de recoger las pulsaciones de las teclas como *keyPressed()*, además de funciones para capturar las pulsaciones del ratón como *mousePressed()*, además de una función adicional que se encarga de actualizar la textura de la esfera con la nueva imagen *setTexture()*.
+
+<br/>
+
+#### Clase *Help*
+
+Esta clase se añadió el control de un nuevo botón, el encargado de cambiar los textos en la vista de ayuda.
+
+    void drawControls() {
+      fill(0);
+      stroke(255);
+      rect((width/2) + 140, (height/5) + 220, btnWS, btnH);   
+      fill(255);
+      textSize(14);
+      if (generalControl) {
+        text("GENERAL", ((width/2) + 140) + 14, ((height/5) + 220) + 15);
+      } else {
+        text("SHADERS", ((width/2) + 140) + 14, ((height/5) + 220) + 15);
+      }
+      fill(0);
+    }
+
+El resto de funciones y clases han permanecido intocables. Para consultar el código fuente de la aplicación, puede dirigirse al siguiente enlace:
+
+[Consultar código fuente](https://github.com/JoseMAP-99/JoseMAP-99.github.io/tree/master/codes/IMAGE_VIEWER_V2)
+
+<br/>
+<br/>
+
+## Resultados obtenidos
+
+A continuación se muestra la ejecución de la aplicación en *Processing* en formato de GIF (Figura 7).
+
+![](/images/image_viewer_v2/funcionamiento.gif "Fig. 7: Funcionamiento de la aplicación")
+
+<br/>
+<br/>
+
+## Descarga del código fuente
+
+Si desea descargar el código fuente, puede hacerlo desde el siguiente enlace:
+
+[Descarga del código fuente](https://downgit.github.io/#/home?url=https://github.com/JoseMAP-99/JoseMAP-99.github.io/tree/master/codes/IMAGE_VIEWER_V2)
+
+<br/>
+<br/>
 
 ## Referencias
 
