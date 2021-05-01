@@ -114,7 +114,7 @@ Para conseguir que la aplicación funcione adecuadamente, se ha empleado una ser
     //------Variables de estado y controles-------//
     boolean onlyFrag, generalControl;
     
-</br>
+<br/>
 
 #### Función *setup()*
 
@@ -132,7 +132,7 @@ En esta función se han inicializado las distintas variables existentes, y la fo
       ...
     }
     
-</br>
+<br/>
 
 #### Función de dibujado general *draw()*
 
@@ -150,7 +150,7 @@ Esta función es la que se ocupa de mantener el tablero actualizado, y lo único
       ...
     }
     
-</br>
+<br/>
 
 #### Función de actualización *rotateSphere()*
 
@@ -167,7 +167,7 @@ Esta función se encarga de actualizar la posición de la esfera, además de act
       popMatrix();
     }
     
-</br>
+<br/>
 
 #### Funciones restantes
 
