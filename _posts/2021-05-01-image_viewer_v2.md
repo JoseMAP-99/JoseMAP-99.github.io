@@ -52,7 +52,7 @@ Los controles están disponibles desde la vista de ayuda de la aplicación (Figu
 
 * **Tecla 'LEFT' - 'RIGHT':** Cambia a la imagen siguiente o anterior.
 
-* **Tecla 'C':** Permite cambiar el tipo de *shader* (Fragmento | Fragmento-Vértice)
+* **Tecla 'C':** Permite cambiar el tipo de *shader* (Fragmento o Fragmento-Vértice)
 
 **RATÓN**
 
