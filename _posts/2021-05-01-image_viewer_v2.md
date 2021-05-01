@@ -222,6 +222,6 @@ Si desea descargar el código fuente, puede hacerlo desde el siguiente enlace:
 
 [^1]: [Página de consulta sobre *GLSL*](https://www.khronos.org/opengl/wiki/Core_Language_(GLSL))
 [^2]: [Práctica anterior *Filtros para imágenes*](https://josemap-99.github.io/2021/04/26/image_viewer.html)
-[^3]: [Página de consulta en *C*](https://es.wikipedia.org/wiki/C_(lenguaje_de_programaci%C3%B3n))
+[^3]: [Página de consulta sobre *C*](https://es.wikipedia.org/wiki/C_(lenguaje_de_programaci%C3%B3n))
 [^4]: [Página de consulta sobre *Processing*](https://processing.org/)
 [^5]: [Página de consulta sobre *Pixabay*](https://pixabay.com/es/)
