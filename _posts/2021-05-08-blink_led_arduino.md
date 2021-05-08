@@ -18,7 +18,7 @@ Se produce una señal senoidal que define la envolvente, de manera que cuando di
 
 El diseño y configuración ha sido el que se puede observar en la siguiente figura. Se adjunta el <a href=" https://www.tinkercad.com/things/cknacAsoMJE">enlace de la configuración en Tinkercad</a> para visualizar la simulación y modificar el código si se desea.
 
-![](/My-Processing-Book/images/blink_led/blink-led-tinkercad-demo.gif "Diseño, configuración y simulación del Arduino en Tinkercad")
+![](/images/blink_led/blink-led-tinkercad-demo.gif "Diseño, configuración y simulación del Arduino en Tinkercad")
 
 ## Código implementado
 
@@ -71,14 +71,14 @@ A continuación se describe el trabajo realizado. Se crean e inicializan las var
       
 <br>A continuación, se muestra el resultado final mediante un gif animado: 
 
-| ![](/My-Processing-Book/images/blink_led/blink-led-serial-demo.gif "Salida del monitor serie") |
+| ![](/images/blink_led/blink-led-serial-demo.gif "Salida del monitor serie") |
 | ![](https://media.giphy.com/media/xx9DkkDZIqvtpPQFNa/giphy.gif "Prueba del código en vivo") |
 
 
 ## Descargar código en Arduino
-Para descargar el código en Arduino, acceda a: <a href="https://downgit.github.io/#/home?url=https://github.com/Prashant-JT/My-Processing-Book/tree/master/projects/blink_led">Descargar código en Arduino</a> o acceda a la carpeta del repositorio del proyecto en: <a href="https://github.com/Prashant-JT/My-Processing-Book/tree/master/projects/blink_led">Repositorio del proyecto</a>
+Para descargar el código en Arduino, acceda a: <a href="https://downgit.github.io/#/home?url=https://github.com/JoseMAP-99/JoseMAP-99.github.io/codes/blink_led">Descargar código en Arduino</a> o acceda a la carpeta del repositorio del proyecto en: <a href="https://github.com/JoseMAP-99/JoseMAP-99.github.io/codes/blink_led">Repositorio del proyecto</a>
 
-<a href="#"><b>Repositorio del proyecto de José María Amusquívar Poppe</b></a>
+<a href="https://prashant-jt.github.io/My-Processing-Book/2021/05/04/blink-led.html"><b>Repositorio del proyecto de Prashant Jeswani Tejwani</b></a>
 
 <a href="#"><b>Repositorio del proyecto de Fabián Alfonso Beirutti Pérez</b></a>
 
