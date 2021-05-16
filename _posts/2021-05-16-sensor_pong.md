@@ -115,7 +115,7 @@ A continuación se describe el trabajo realizado. Respecto al código de Process
 
 
 ## Descargar código en Processing y Arduino
-Para descargar el código en Processing y Arduino, acceda a: <a href="https://downgit.github.io/#/home?url=https://github.com/JoseMAP-99/JoseMAP-99.github.io/tree/master/codes/sensor_pong">Descargar código en Processing y Arduino</a> o acceda a la carpeta del repositorio del proyecto en: <a href="https://github.com/JoseMAP-99/JoseMAP-99.github.io/tree/master/codes/sensor_pong">Repositorio del proyecto</a>
+Para descargar el código en Processing y Arduino, acceda a: <a href="https://downgit.github.io/#/home?url=https://github.com/JoseMAP-99/JoseMAP-99.github.io/tree/master/codes/SENSOR_PONG">Descargar código en Processing y Arduino</a> o acceda a la carpeta del repositorio del proyecto en: <a href="https://github.com/JoseMAP-99/JoseMAP-99.github.io/tree/master/codes/SENSOR_PONG">Repositorio del proyecto</a>
 
 <a href="https://prashant-jt.github.io/My-Processing-Book/2021/05/09/sensor-pong.html"><b>Repositorio del proyecto de Prashant Jeswani Tejwani</b></a>
 
